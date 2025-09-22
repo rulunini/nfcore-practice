@@ -4,7 +4,7 @@
 // See .github/.devcontainer/devcontainer.json for build
 //
 {
-    "name": "ajou-bootcamp",
+    "name": "nfcore-practice",
     "image": "ghcr.io/nextflow-io/training:latest",
     "workspaceFolder": "/workspaces/ajou-bootcamp",
     "remoteUser": "root",
@@ -14,7 +14,7 @@
         "NXF_EDGE": "0",
         "NXF_VER": "25.04.3",
         // Other env vars
-        "HOST_PROJECT_PATH": "/workspaces/ajou-bootcamp",
+        "HOST_PROJECT_PATH": "/workspaces/nfcore-practice",
         "SHELL": "/bin/bash" // Ush bash
     },
     "onCreateCommand": "bash .devcontainer/setup.sh",
