@@ -6,7 +6,7 @@
 {
     "name": "nfcore-practice",
     "image": "ghcr.io/nextflow-io/training:latest",
-    "workspaceFolder": "/workspaces/ajou-bootcamp",
+    "workspaceFolder": "/workspaces/nfcore-practice",
     "remoteUser": "root",
     "remoteEnv": {
         // Nextflow installation version
