@@ -1,0 +1,2 @@
+"NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:SE_GENE_UNIFIED":
+    bioconductor-summarizedexperiment: 1.32.0

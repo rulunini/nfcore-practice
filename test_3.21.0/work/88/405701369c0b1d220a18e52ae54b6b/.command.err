@@ -1,0 +1,32 @@
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+Running StringTie 2.2.3. Command line:
+stringtie WT_REP1.markdup.sorted.bam --rf -G genome_gfp.gtf -o WT_REP1.transcripts.gtf -A WT_REP1.gene.abundance.txt -C WT_REP1.coverage.gtf -b WT_REP1.ballgown -p 4 -v -e
+[09/24 02:16:24] Loading reference annotation (guides)..
+[09/24 02:16:24] 125 reference transcripts loaded.
+Default stack size for threads: 8388608
+[09/24 02:16:24]>bundle I:1807-2214 [8 alignments (6 distinct), 0 junctions, 1 guides] begins processing...
+Warning: invalid mapping found for read SRR6357070.42193418 (position=34597, mapped length=9)
+Warning: invalid mapping found for read SRR6357070.6899654 (position=41507, mapped length=8)
+Warning: invalid mapping found for read SRR6357071.50474389 (position=44808, mapped length=8)
+Warning: invalid mapping found for read SRR6357071.50474389 (position=46251, mapped length=8)
+Warning: invalid mapping found for read SRR6357070.27175665 (position=51442, mapped length=9)
+Warning: invalid mapping found for read SRR6357070.27175665 (position=59404, mapped length=9)
+Warning: invalid mapping found for read SRR6357071.50474389 (position=60701, mapped length=9)
+Warning: invalid mapping found for read SRR6357070.42193418 (position=62093, mapped length=8)
+Warning: invalid mapping found for read SRR6357070.36166866 (position=67445, mapped length=9)
+Warning: invalid mapping found for read SRR6357070.42193418 (position=67561, mapped length=9)
+Warning: invalid mapping found for read SRR6357070.42193418 (position=69670, mapped length=9)
+[09/24 02:16:24]^bundle I:1807-2214 done (1 processed potential transcripts).
+Warning: invalid mapping found for read SRR6357070.36166866 (position=72507, mapped length=9)
+Warning: invalid mapping found for read SRR6357071.50474389 (position=77826, mapped length=8)
+Warning: invalid mapping found for read SRR6357071.50474389 (position=83009, mapped length=8)
+Warning: invalid mapping found for read SRR6357071.50474389 (position=86094, mapped length=8)
+Warning: invalid mapping found for read SRR6357070.27175665 (position=104262, mapped length=9)
+Warning: invalid mapping found for read SRR6357071.50474389 (position=153611, mapped length=8)
+Warning: invalid mapping found for read SRR6357070.27175665 (position=185592, mapped length=8)
+[09/24 02:16:24]>bundle I:2480-229459 [164014 alignments (33993 distinct), 219 junctions, 121 guides] begins processing...
+[09/24 02:16:24] 7 aligned fragments found.
+[09/24 02:16:24]^bundle I:2480-229459 done (95 processed potential transcripts).
+[09/24 02:16:24] All threads finished.
+Total count of aligned fragments: 91468.3
+Fragment coverage length: 174.671

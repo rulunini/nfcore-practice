@@ -1,0 +1,12 @@
+{
+    "salmon_version": "1.10.3",
+    "geneMap": "genome_gfp.gtf",
+    "threads": "4",
+    "libType": "A",
+    "index": "salmon",
+    "mates1": "WT_REP1.subsampled_R1.fastq.gz",
+    "mates2": "WT_REP1.subsampled_R2.fastq.gz",
+    "skipQuant": [],
+    "output": "WT_REP1",
+    "auxDir": "aux_info"
+}

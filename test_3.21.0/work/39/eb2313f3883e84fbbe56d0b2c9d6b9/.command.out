@@ -1,0 +1,12 @@
+	/opt/conda/bin/STAR-sse4.1 --genomeDir star --readFilesIn input1/RAP1_UNINDUCED_REP1_primary.fastq.gz --runThreadN 4 --outFileNamePrefix RAP1_UNINDUCED_REP1. --sjdbGTFfile genome_gfp.gtf --outSAMattrRGline ID:RAP1_UNINDUCED_REP1 SM:RAP1_UNINDUCED_REP1 --quantMode TranscriptomeSAM --outSAMtype BAM Unsorted --outSAMattributes NH HI AS NM MD --readFilesCommand zcat --twopassMode Basic --runRNGseed 0 --outFilterMultimapNmax 20 --alignSJDBoverhangMin 1 --outSAMstrandField intronMotif --quantTranscriptomeSAMoutput BanSingleEnd
+	STAR version: 2.7.11b   compiled: 2025-01-09T12:35:26+0000 :/opt/conda/conda-bld/star_1736425784849/work/source
+Sep 24 02:06:01 ..... started STAR run
+Sep 24 02:06:01 ..... loading genome
+Sep 24 02:06:01 ..... processing annotations GTF
+Sep 24 02:06:01 ..... inserting junctions into the genome indices
+Sep 24 02:06:01 ..... started 1st pass mapping
+Sep 24 02:06:03 ..... finished 1st pass mapping
+Sep 24 02:06:03 ..... inserting junctions into the genome indices
+Sep 24 02:06:03 ..... started mapping
+Sep 24 02:06:06 ..... finished mapping
+Sep 24 02:06:06 ..... finished successfully

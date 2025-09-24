@@ -1,0 +1,10 @@
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+[2m2025-09-24T02:05:55.047651Z[0m [32m INFO[0m [2mfq::commands::subsample[0m[2m:[0m fq-subsample start
+[2m2025-09-24T02:05:55.048882Z[0m [32m INFO[0m [2mfq::commands::subsample[0m[2m:[0m initializing rng from seed = 1
+[2m2025-09-24T02:05:55.049182Z[0m [32m INFO[0m [2mfq::commands::subsample[0m[2m:[0m counting records
+[2m2025-09-24T02:05:55.147128Z[0m [32m INFO[0m [2mfq::commands::subsample[0m[2m:[0m r1-src record count = 99225
+[2m2025-09-24T02:05:55.147365Z[0m [33m WARN[0m [2mfq::commands::subsample[0m[2m:[0m record count (1000000) > r1-src record count (99225). Using record-count = 99225 instead.
+[2m2025-09-24T02:05:55.147410Z[0m [32m INFO[0m [2mfq::commands::subsample[0m[2m:[0m building filter
+[2m2025-09-24T02:05:55.154299Z[0m [32m INFO[0m [2mfq::commands::subsample[0m[2m:[0m sampling paired end reads
+[2m2025-09-24T02:05:58.660445Z[0m [32m INFO[0m [2mfq::commands::subsample[0m[2m:[0m sampled 99225/99225 (100.0%) records
+[2m2025-09-24T02:05:58.661831Z[0m [32m INFO[0m [2mfq::commands::subsample[0m[2m:[0m fq-subsample end

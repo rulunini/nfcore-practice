@@ -1,0 +1,32 @@
+Unable to find image 'community.wave.seqera.io/library/bedtools_coreutils:a623c13f66d5262b' locally
+a623c13f66d5262b: Pulling from library/bedtools_coreutils
+03dae77ff45c: Pulling fs layer
+6360b3717211: Pulling fs layer
+2ec3f7ad9b3c: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+837d55536720: Pulling fs layer
+e38d506e3695: Pulling fs layer
+8c61d418774c: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+7716ca300600: Pulling fs layer
+aab7f787139d: Pulling fs layer
+3893cbe24e91: Pulling fs layer
+d1b61e94977b: Pulling fs layer
+897362c12ca7: Pulling fs layer
+77684b044e50: Pulling fs layer
+4f4fb700ef54: Already exists
+8c61d418774c: Download complete
+2ec3f7ad9b3c: Download complete
+3893cbe24e91: Download complete
+837d55536720: Download complete
+897362c12ca7: Download complete
+77684b044e50: Download complete
+aab7f787139d: Download complete
+d1b61e94977b: Download complete
+03dae77ff45c: Download complete
+7716ca300600: Download complete
+6360b3717211: Download complete
+e38d506e3695: Download complete
+Digest: sha256:87d2a7cad1272517e4b6e7e2f846a3763c012b46978f1ff0dc5c345f32dbeeac
+Status: Downloaded newer image for community.wave.seqera.io/library/bedtools_coreutils:a623c13f66d5262b
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested

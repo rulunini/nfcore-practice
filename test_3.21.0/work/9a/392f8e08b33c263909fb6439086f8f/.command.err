@@ -1,0 +1,59 @@
+Unable to find image 'quay.io/biocontainers/subread:2.0.6--he4a0461_2' locally
+2.0.6--he4a0461_2: Pulling from biocontainers/subread
+32da9fa595d3: Pulling fs layer
+32da9fa595d3: Download complete
+Digest: sha256:114390a783c77f7739d86e474bedfa5a4e65309a2f71d4db430803fb04601f5d
+Status: Downloaded newer image for quay.io/biocontainers/subread:2.0.6--he4a0461_2
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+
+        ==========     _____ _    _ ____  _____  ______          _____  
+        =====         / ____| |  | |  _ \|  __ \|  ____|   /\   |  __ \ 
+          =====      | (___ | |  | | |_) | |__) | |__     /  \  | |  | |
+            ====      \___ \| |  | |  _ <|  _  /|  __|   / /\ \ | |  | |
+              ====    ____) | |__| | |_) | | \ \| |____ / ____ \| |__| |
+        ==========   |_____/ \____/|____/|_|  \_\______/_/    \_\_____/
+	  v2.0.6
+
+//========================== featureCounts setting ===========================\\
+||                                                                            ||
+||             Input files : 1 BAM file                                       ||
+||                                                                            ||
+||                           RAP1_UNINDUCED_REP1.markdup.sorted.bam           ||
+||                                                                            ||
+||             Output file : RAP1_UNINDUCED_REP1.featureCounts.tsv            ||
+||                 Summary : RAP1_UNINDUCED_REP1.featureCounts.tsv.summary    ||
+||              Paired-end : no                                               ||
+||        Count read pairs : no                                               ||
+||              Annotation : genome_gfp.gtf (GTF)                             ||
+||      Dir for temp files : ./                                               ||
+||                                                                            ||
+||                 Threads : 4                                                ||
+||                   Level : meta-feature level                               ||
+||      Multimapping reads : not counted                                      ||
+|| Multi-overlapping reads : not counted                                      ||
+||   Min overlapping bases : 1                                                ||
+||                                                                            ||
+\\============================================================================//
+
+//================================= Running ==================================\\
+||                                                                            ||
+|| Load annotation file genome_gfp.gtf ...                                    ||
+||    Features : 130                                                          ||
+||    Meta-features : 6                                                       ||
+||    Chromosomes/contigs : 2                                                 ||
+||                                                                            ||
+|| Process BAM file RAP1_UNINDUCED_REP1.markdup.sorted.bam...                 ||
+||    Strand specific : reversely stranded                                    ||
+||    Single-end reads are included.                                          ||
+||    Total alignments : 48977                                                ||
+||    Successfully assigned alignments : 42946 (87.7%)                        ||
+||    Running time : 0.00 minutes                                             ||
+||                                                                            ||
+|| Write the final count table.                                               ||
+|| Write the read assignment summary.                                         ||
+||                                                                            ||
+|| Summary of counting results can be found in file "RAP1_UNINDUCED_REP1.fea  ||
+|| tureCounts.tsv.summary"                                                    ||
+||                                                                            ||
+\\============================================================================//
+

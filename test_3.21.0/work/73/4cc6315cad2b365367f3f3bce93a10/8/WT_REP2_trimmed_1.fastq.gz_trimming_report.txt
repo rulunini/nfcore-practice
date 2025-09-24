@@ -1,0 +1,1 @@
+/Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/45/09aac0b3acb25c736925f94a04e853/WT_REP2_trimmed_1.fastq.gz_trimming_report.txt

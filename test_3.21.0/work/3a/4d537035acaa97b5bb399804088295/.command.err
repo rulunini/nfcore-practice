@@ -1,0 +1,8 @@
+Unable to find image 'quay.io/biocontainers/python:3.10.4' locally
+3.10.4: Pulling from biocontainers/python
+aa506736ff76: Pulling fs layer
+aa506736ff76: Download complete
+Digest: sha256:6745f24775c46d74a7c6e0f9d9b3b4cb3b14cadf531e9670f8b2fa26d1dbc637
+Status: Downloaded newer image for quay.io/biocontainers/python:3.10.4
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+__main__ - 2025-09-24 02:07:25,303 INFO: Attribute 'transcript_id' corresponds to transcripts.

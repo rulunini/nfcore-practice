@@ -1,0 +1,10 @@
+#parent_id: 'sample-status'
+#parent_name: 'Sample status checks'
+#parent_description: 'Reports on sample strandedness status, and any failures in trimming or mapping'
+Sample	Strand inference method	Status	Provided strandedness	Inferred strandedness	Sense (%)	Antisense (%)	Unstranded (%)
+RAP1_UNINDUCED_REP1	RSeQC	pass	reverse	reverse	2.279772121069852	85.39146032957309	12.328767549357048
+WT_REP2	RSeQC	pass	reverse	reverse	0.9100000551994901	83.78999993166886	15.300000013131648
+RAP1_IAA_30M_REP1	RSeQC	pass	reverse	reverse	0.749925006577425	83.60163982823676	15.64843516518582
+RAP1_UNINDUCED_REP2	RSeQC	pass	reverse	reverse	3.2203221796797057	85.9585957395331	10.8210820807872
+WT_REP1 	Salmon	pass	auto	reverse	10.86085556847955	89.13914443152045	0.0
+WT_REP1	RSeQC	pass	auto	reverse	0.8200820052106766	85.71857211598683	13.4613458788025

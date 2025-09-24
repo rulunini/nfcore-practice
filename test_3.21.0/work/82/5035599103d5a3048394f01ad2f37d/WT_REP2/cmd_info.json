@@ -1,0 +1,10 @@
+{
+    "salmon_version": "1.10.3",
+    "geneMap": "genome_gfp.gtf",
+    "threads": "4",
+    "libType": "ISR",
+    "targets": "transcriptome.fasta",
+    "alignments": "WT_REP2.Aligned.toTranscriptome.out.bam",
+    "output": "WT_REP2",
+    "auxDir": "aux_info"
+}

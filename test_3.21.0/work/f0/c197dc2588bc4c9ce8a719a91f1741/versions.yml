@@ -1,0 +1,4 @@
+"NFCORE_RNASEQ:PREPARE_GENOME:STAR_GENOMEGENERATE":
+    star: 2.7.11b
+    samtools: 1.21 
+    gawk: 5.1.0

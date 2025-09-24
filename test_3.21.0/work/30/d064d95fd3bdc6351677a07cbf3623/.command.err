@@ -1,0 +1,3 @@
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+fasta_gtf_filter - 2025-09-24 02:02:43,137 INFO: Extracted chromosome sequence names from genome.fasta
+fasta_gtf_filter - 2025-09-24 02:02:43,147 INFO: Extracted 599 matching sequences from genes_with_empty_tid.gtf into genes_with_empty_tid.filtered.gtf

@@ -1,0 +1,136 @@
+Unable to find image 'community.wave.seqera.io/library/multiqc:1.31--1efbafd542a23882' locally
+1.31--1efbafd542a23882: Pulling from library/multiqc
+deaf403706a6: Pulling fs layer
+c0df01cfc837: Pulling fs layer
+c0df01cfc837: Download complete
+deaf403706a6: Download complete
+Digest: sha256:5da4f3537a3bb571a6306628f4cec4cf5f6554fa47237c8fc929b64c1c619447
+Status: Downloaded newer image for community.wave.seqera.io/library/multiqc:1.31--1efbafd542a23882
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+
+/// MultiQC 🔍 v1.31
+
+            config | Loading config settings from: multiqc_config.yml
+       file_search | Search path: /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/73/4cc6315cad2b365367f3f3bce93a10
+       file_search | Only using modules: custom_content, hisat2, kallisto, kraken, picard, preseq, qualimap, rsem, rseqc, salmon, samtools, sortmerna, star, umitools, fastqc, cutadapt, fastp, fastqc
+            report | Skipping 5 file search patterns
+
+    custom_content | biotype_counts: Found 1 samples (PlotType.BAR)
+        validation | warnings while parsing lineplot.pconfig[id='dupradar'].x_lines {color: green, dash: longdash, label: {text: 0.5 RPKM}, value: 0.5, width: 1} (total messages: 2):
+• 'dash': 'LongDash' is a deprecated dash style, use 'longdash'
+• 'label': Line plot's x_lines or y_lines 'label' field is expected to be a string. Other fields other than 'text' are deprecated and will be ignored
+        validation | warnings while parsing lineplot.pconfig[id='dupradar'].x_lines {color: red, dash: longdash, label: {text: 1 read/bp}, value: 1000, width: 1} (total messages: 2):
+• 'dash': 'LongDash' is a deprecated dash style, use 'longdash'
+• 'label': Line plot's x_lines or y_lines 'label' field is expected to be a string. Other fields other than 'text' are deprecated and will be ignored
+    custom_content | dupradar: Found 1 samples (PlotType.LINE)
+    custom_content | biotype-gs: Found 5 General Statistics columns
+    custom_content | DupInt: Found 5 General Statistics columns
+    custom_content | fail_strand_check: Found 6 samples (PlotType.TABLE)
+    custom_content | nf-core-rnaseq-methods-description: Found 1 sample (html)
+    custom_content | salmon_deseq2_clustering: Found 5 samples (PlotType.HEATMAP)
+    custom_content | salmon_deseq2_pca: Found 5 samples (PlotType.SCATTER)
+    custom_content | star_salmon_deseq2_clustering: Found 5 samples (PlotType.HEATMAP)
+    custom_content | star_salmon_deseq2_pca: Found 5 samples (PlotType.SCATTER)
+    custom_content | nf-core-rnaseq-summary: Found 1 sample (html)
+            picard | Found 5 MarkDuplicates reports
+          qualimap | Found 5 RNASeq reports
+             rseqc | Found 5 read_distribution reports
+             rseqc | Found 3 inner_distance reports
+             rseqc | Found 5 read_duplication reports
+             rseqc | Found 5 junction_annotation reports
+             rseqc | Found 5 junction_saturation reports
+             rseqc | Found 5 infer_experiment reports
+             rseqc | Found 5 bam_stat reports
+            salmon | Found 5 meta reports
+            salmon | Found 5 fragment length distributions
+            salmon | Found 5 library format counts reports
+          samtools | Found 5 stats reports
+          samtools | Found 5 flagstat reports
+          samtools | Found 5 idxstats reports
+              star | Found 5 reports
+            fastqc | Found 8 reports
+          cutadapt | Found 8 reports
+            fastqc | Found 8 reports
+       file_search | Only using modules: picard, qualimap, rseqc, salmon, samtools, star, fastqc, cutadapt, fastqc, biotype_counts, dupradar, sample-status, nf-core-rnaseq-methods-description, sample-relationships, nf-core-rnaseq-summary
+     write_results | Rendering plots. Export plots to formats png, svg, pdf is requested, so it might take a while. To disable plot export, set `export_plots: false` in config, or remove the `--export-plots` command line flag
+
+
+        mqc_colour | Error converting color '55,126,184' to RGB: input #55,126,184 is not in #RRGGBB format
+        mqc_colour | Error converting color '77,175,74' to RGB: input #77,175,74 is not in #RRGGBB format
+        mqc_colour | Error converting color '152,78,163' to RGB: input #152,78,163 is not in #RRGGBB format
+        mqc_colour | Error converting color '255,127,0' to RGB: input #255,127,0 is not in #RRGGBB format
+        mqc_colour | Error converting color '255,127,0' to RGB: input #255,127,0 is not in #RRGGBB format
+        mqc_colour | Error converting color '228,26,28' to RGB: input #228,26,28 is not in #RRGGBB format
+        mqc_colour | Error converting color '179,179,50' to RGB: input #179,179,50 is not in #RRGGBB format
+        mqc_colour | Error converting color '179,179,50' to RGB: input #179,179,50 is not in #RRGGBB format
+        mqc_colour | Error converting color '179,179,50' to RGB: input #179,179,50 is not in #RRGGBB format
+        mqc_colour | Error converting color '166,86,40' to RGB: input #166,86,40 is not in #RRGGBB format
+        mqc_colour | Error converting color '166,86,40' to RGB: input #166,86,40 is not in #RRGGBB format
+        mqc_colour | Error converting color '247,129,191' to RGB: input #247,129,191 is not in #RRGGBB format
+        mqc_colour | Error converting color '247,129,191' to RGB: input #247,129,191 is not in #RRGGBB format
+        mqc_colour | Error converting color '247,129,191' to RGB: input #247,129,191 is not in #RRGGBB format
+        mqc_colour | Error converting color '247,129,191' to RGB: input #247,129,191 is not in #RRGGBB format
+        mqc_colour | Error converting color '247,129,191' to RGB: input #247,129,191 is not in #RRGGBB format
+        mqc_colour | Error converting color '247,129,191' to RGB: input #247,129,191 is not in #RRGGBB format
+        mqc_colour | Error converting color '153,153,153' to RGB: input #153,153,153 is not in #RRGGBB format
+        mqc_colour | Error converting color '55,126,184' to RGB: input #55,126,184 is not in #RRGGBB format
+        mqc_colour | Error converting color '55,126,184' to RGB: input #55,126,184 is not in #RRGGBB format
+        mqc_colour | Error converting color '77,175,74' to RGB: input #77,175,74 is not in #RRGGBB format
+        mqc_colour | Error converting color '77,175,74' to RGB: input #77,175,74 is not in #RRGGBB format
+        mqc_colour | Error converting color '152,78,163' to RGB: input #152,78,163 is not in #RRGGBB format
+        mqc_colour | Error converting color '255,127,0' to RGB: input #255,127,0 is not in #RRGGBB format
+        mqc_colour | Error converting color '255,127,0' to RGB: input #255,127,0 is not in #RRGGBB format
+        mqc_colour | Error converting color '55,126,184' to RGB: input #55,126,184 is not in #RRGGBB format
+        mqc_colour | Error converting color '55,126,184' to RGB: input #55,126,184 is not in #RRGGBB format
+        mqc_colour | Error converting color '77,175,74' to RGB: input #77,175,74 is not in #RRGGBB format
+        mqc_colour | Error converting color '77,175,74' to RGB: input #77,175,74 is not in #RRGGBB format
+        mqc_colour | Error converting color '152,78,163' to RGB: input #152,78,163 is not in #RRGGBB format
+        mqc_colour | Error converting color '152,78,163' to RGB: input #152,78,163 is not in #RRGGBB format
+        mqc_colour | Error converting color '255,127,0' to RGB: input #255,127,0 is not in #RRGGBB format
+        mqc_colour | Error converting color '255,127,0' to RGB: input #255,127,0 is not in #RRGGBB format
+        mqc_colour | Error converting color '255,127,0' to RGB: input #255,127,0 is not in #RRGGBB format
+        mqc_colour | Error converting color '255,127,0' to RGB: input #255,127,0 is not in #RRGGBB format
+        mqc_colour | Error converting color '228,26,28' to RGB: input #228,26,28 is not in #RRGGBB format
+        mqc_colour | Error converting color '228,26,28' to RGB: input #228,26,28 is not in #RRGGBB format
+        mqc_colour | Error converting color '179,179,50' to RGB: input #179,179,50 is not in #RRGGBB format
+        mqc_colour | Error converting color '179,179,50' to RGB: input #179,179,50 is not in #RRGGBB format
+        mqc_colour | Error converting color '179,179,50' to RGB: input #179,179,50 is not in #RRGGBB format
+        mqc_colour | Error converting color '179,179,50' to RGB: input #179,179,50 is not in #RRGGBB format
+        mqc_colour | Error converting color '179,179,50' to RGB: input #179,179,50 is not in #RRGGBB format
+        mqc_colour | Error converting color '179,179,50' to RGB: input #179,179,50 is not in #RRGGBB format
+        mqc_colour | Error converting color '166,86,40' to RGB: input #166,86,40 is not in #RRGGBB format
+        mqc_colour | Error converting color '166,86,40' to RGB: input #166,86,40 is not in #RRGGBB format
+        mqc_colour | Error converting color '166,86,40' to RGB: input #166,86,40 is not in #RRGGBB format
+        mqc_colour | Error converting color '166,86,40' to RGB: input #166,86,40 is not in #RRGGBB format
+        mqc_colour | Error converting color '247,129,191' to RGB: input #247,129,191 is not in #RRGGBB format
+        mqc_colour | Error converting color '247,129,191' to RGB: input #247,129,191 is not in #RRGGBB format
+        mqc_colour | Error converting color '247,129,191' to RGB: input #247,129,191 is not in #RRGGBB format
+        mqc_colour | Error converting color '247,129,191' to RGB: input #247,129,191 is not in #RRGGBB format
+        mqc_colour | Error converting color '247,129,191' to RGB: input #247,129,191 is not in #RRGGBB format
+        mqc_colour | Error converting color '247,129,191' to RGB: input #247,129,191 is not in #RRGGBB format
+        mqc_colour | Error converting color '247,129,191' to RGB: input #247,129,191 is not in #RRGGBB format
+        mqc_colour | Error converting color '247,129,191' to RGB: input #247,129,191 is not in #RRGGBB format
+        mqc_colour | Error converting color '247,129,191' to RGB: input #247,129,191 is not in #RRGGBB format
+        mqc_colour | Error converting color '247,129,191' to RGB: input #247,129,191 is not in #RRGGBB format
+        mqc_colour | Error converting color '247,129,191' to RGB: input #247,129,191 is not in #RRGGBB format
+        mqc_colour | Error converting color '247,129,191' to RGB: input #247,129,191 is not in #RRGGBB format
+        mqc_colour | Error converting color '153,153,153' to RGB: input #153,153,153 is not in #RRGGBB format
+        mqc_colour | Error converting color '153,153,153' to RGB: input #153,153,153 is not in #RRGGBB format
+        mqc_colour | Error converting color '55,126,184' to RGB: input #55,126,184 is not in #RRGGBB format
+        mqc_colour | Error converting color '55,126,184' to RGB: input #55,126,184 is not in #RRGGBB format
+        mqc_colour | Error converting color '55,126,184' to RGB: input #55,126,184 is not in #RRGGBB format
+        mqc_colour | Error converting color '55,126,184' to RGB: input #55,126,184 is not in #RRGGBB format
+        mqc_colour | Error converting color '77,175,74' to RGB: input #77,175,74 is not in #RRGGBB format
+        mqc_colour | Error converting color '77,175,74' to RGB: input #77,175,74 is not in #RRGGBB format
+        mqc_colour | Error converting color '77,175,74' to RGB: input #77,175,74 is not in #RRGGBB format
+        mqc_colour | Error converting color '77,175,74' to RGB: input #77,175,74 is not in #RRGGBB format
+        mqc_colour | Error converting color '152,78,163' to RGB: input #152,78,163 is not in #RRGGBB format
+        mqc_colour | Error converting color '152,78,163' to RGB: input #152,78,163 is not in #RRGGBB format
+        mqc_colour | Error converting color '255,127,0' to RGB: input #255,127,0 is not in #RRGGBB format
+        mqc_colour | Error converting color '255,127,0' to RGB: input #255,127,0 is not in #RRGGBB format
+        mqc_colour | Error converting color '255,127,0' to RGB: input #255,127,0 is not in #RRGGBB format
+        mqc_colour | Error converting color '255,127,0' to RGB: input #255,127,0 is not in #RRGGBB format
+     write_results | Data        : multiqc_report_data
+     write_results | Report      : multiqc_report.html
+     write_results | Plots       : multiqc_report_plots
+           multiqc | MultiQC complete

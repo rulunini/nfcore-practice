@@ -1,0 +1,12 @@
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+Running StringTie 2.2.3. Command line:
+stringtie RAP1_IAA_30M_REP1.markdup.sorted.bam --rf -G genome_gfp.gtf -o RAP1_IAA_30M_REP1.transcripts.gtf -A RAP1_IAA_30M_REP1.gene.abundance.txt -C RAP1_IAA_30M_REP1.coverage.gtf -b RAP1_IAA_30M_REP1.ballgown -p 4 -v -e
+[09/24 02:14:05] Loading reference annotation (guides)..
+[09/24 02:14:05] 125 reference transcripts loaded.
+Default stack size for threads: 8388608
+Warning: invalid mapping found for read SRR6357076.40250624 (position=175842, mapped length=9)
+[09/24 02:14:05]>bundle I:335-229329 [84211 alignments (24780 distinct), 107 junctions, 124 guides] begins processing...
+[09/24 02:14:05]^bundle I:335-229329 done (97 processed potential transcripts).
+[09/24 02:14:05] All threads finished.
+Total count of aligned fragments: 46321.7
+Fragment coverage length: 177.509

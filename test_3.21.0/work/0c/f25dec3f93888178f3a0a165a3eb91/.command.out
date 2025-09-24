@@ -1,0 +1,192 @@
+
+        ==========     _____ _    _ ____  _____  ______          _____  
+        =====         / ____| |  | |  _ \|  __ \|  ____|   /\   |  __ \ 
+          =====      | (___ | |  | | |_) | |__) | |__     /  \  | |  | |
+            ====      \___ \| |  | |  _ <|  _  /|  __|   / /\ \ | |  | |
+              ====    ____) | |__| | |_) | | \ \| |____ / ____ \| |__| |
+        ==========   |_____/ \____/|____/|_|  \_\______/_/    \_\_____/
+       Rsubread 2.16.0
+
+//========================== featureCounts setting ===========================\\
+||                                                                            ||
+||             Input files : 1 BAM file                                       ||
+||                                                                            ||
+||                           RAP1_UNINDUCED_REP1.markdup.sorted.bam           ||
+||                                                                            ||
+||              Paired-end : no                                               ||
+||        Count read pairs : no                                               ||
+||              Annotation : genome_gfp.gtf (GTF)                             ||
+||      Dir for temp files : .                                                ||
+||                 Threads : 1                                                ||
+||                   Level : meta-feature level                               ||
+||      Multimapping reads : counted                                          ||
+|| Multi-overlapping reads : not counted                                      ||
+||   Min overlapping bases : 1                                                ||
+||                                                                            ||
+\\============================================================================//
+
+//================================= Running ==================================\\
+||                                                                            ||
+|| Load annotation file genome_gfp.gtf ...                                    ||
+||    Features : 130                                                          ||
+||    Meta-features : 125                                                     ||
+||    Chromosomes/contigs : 2                                                 ||
+||                                                                            ||
+|| Process BAM file RAP1_UNINDUCED_REP1.markdup.sorted.bam...                 ||
+||    Strand specific : reversely stranded                                    ||
+||    Single-end reads are included.                                          ||
+||    Total alignments : 48977                                                ||
+||    Successfully assigned alignments : 43329 (88.5%)                        ||
+||    Running time : 0.00 minutes                                             ||
+||                                                                            ||
+|| Write the final count table.                                               ||
+|| Write the read assignment summary.                                         ||
+||                                                                            ||
+\\============================================================================//
+
+
+        ==========     _____ _    _ ____  _____  ______          _____  
+        =====         / ____| |  | |  _ \|  __ \|  ____|   /\   |  __ \ 
+          =====      | (___ | |  | | |_) | |__) | |__     /  \  | |  | |
+            ====      \___ \| |  | |  _ <|  _  /|  __|   / /\ \ | |  | |
+              ====    ____) | |__| | |_) | | \ \| |____ / ____ \| |__| |
+        ==========   |_____/ \____/|____/|_|  \_\______/_/    \_\_____/
+       Rsubread 2.16.0
+
+//========================== featureCounts setting ===========================\\
+||                                                                            ||
+||             Input files : 1 BAM file                                       ||
+||                                                                            ||
+||                           RAP1_UNINDUCED_REP1.markdup.sorted.bam           ||
+||                                                                            ||
+||              Paired-end : no                                               ||
+||        Count read pairs : no                                               ||
+||              Annotation : genome_gfp.gtf (GTF)                             ||
+||      Dir for temp files : .                                                ||
+||                 Threads : 1                                                ||
+||                   Level : meta-feature level                               ||
+||      Multimapping reads : counted                                          ||
+|| Multi-overlapping reads : not counted                                      ||
+||   Min overlapping bases : 1                                                ||
+||        Duplicated Reads : ignored                                          ||
+||                                                                            ||
+\\============================================================================//
+
+//================================= Running ==================================\\
+||                                                                            ||
+|| Load annotation file genome_gfp.gtf ...                                    ||
+||    Features : 130                                                          ||
+||    Meta-features : 125                                                     ||
+||    Chromosomes/contigs : 2                                                 ||
+||                                                                            ||
+|| Process BAM file RAP1_UNINDUCED_REP1.markdup.sorted.bam...                 ||
+||    Strand specific : reversely stranded                                    ||
+||    Single-end reads are included.                                          ||
+||    Total alignments : 48977                                                ||
+||    Successfully assigned alignments : 10070 (20.6%)                        ||
+||    Running time : 0.00 minutes                                             ||
+||                                                                            ||
+|| Write the final count table.                                               ||
+|| Write the read assignment summary.                                         ||
+||                                                                            ||
+\\============================================================================//
+
+
+        ==========     _____ _    _ ____  _____  ______          _____  
+        =====         / ____| |  | |  _ \|  __ \|  ____|   /\   |  __ \ 
+          =====      | (___ | |  | | |_) | |__) | |__     /  \  | |  | |
+            ====      \___ \| |  | |  _ <|  _  /|  __|   / /\ \ | |  | |
+              ====    ____) | |__| | |_) | | \ \| |____ / ____ \| |__| |
+        ==========   |_____/ \____/|____/|_|  \_\______/_/    \_\_____/
+       Rsubread 2.16.0
+
+//========================== featureCounts setting ===========================\\
+||                                                                            ||
+||             Input files : 1 BAM file                                       ||
+||                                                                            ||
+||                           RAP1_UNINDUCED_REP1.markdup.sorted.bam           ||
+||                                                                            ||
+||              Paired-end : no                                               ||
+||        Count read pairs : no                                               ||
+||              Annotation : genome_gfp.gtf (GTF)                             ||
+||      Dir for temp files : .                                                ||
+||                 Threads : 1                                                ||
+||                   Level : meta-feature level                               ||
+||      Multimapping reads : not counted                                      ||
+|| Multi-overlapping reads : not counted                                      ||
+||   Min overlapping bases : 1                                                ||
+||                                                                            ||
+\\============================================================================//
+
+//================================= Running ==================================\\
+||                                                                            ||
+|| Load annotation file genome_gfp.gtf ...                                    ||
+||    Features : 130                                                          ||
+||    Meta-features : 125                                                     ||
+||    Chromosomes/contigs : 2                                                 ||
+||                                                                            ||
+|| Process BAM file RAP1_UNINDUCED_REP1.markdup.sorted.bam...                 ||
+||    Strand specific : reversely stranded                                    ||
+||    Single-end reads are included.                                          ||
+||    Total alignments : 48977                                                ||
+||    Successfully assigned alignments : 42879 (87.5%)                        ||
+||    Running time : 0.00 minutes                                             ||
+||                                                                            ||
+|| Write the final count table.                                               ||
+|| Write the read assignment summary.                                         ||
+||                                                                            ||
+\\============================================================================//
+
+
+        ==========     _____ _    _ ____  _____  ______          _____  
+        =====         / ____| |  | |  _ \|  __ \|  ____|   /\   |  __ \ 
+          =====      | (___ | |  | | |_) | |__) | |__     /  \  | |  | |
+            ====      \___ \| |  | |  _ <|  _  /|  __|   / /\ \ | |  | |
+              ====    ____) | |__| | |_) | | \ \| |____ / ____ \| |__| |
+        ==========   |_____/ \____/|____/|_|  \_\______/_/    \_\_____/
+       Rsubread 2.16.0
+
+//========================== featureCounts setting ===========================\\
+||                                                                            ||
+||             Input files : 1 BAM file                                       ||
+||                                                                            ||
+||                           RAP1_UNINDUCED_REP1.markdup.sorted.bam           ||
+||                                                                            ||
+||              Paired-end : no                                               ||
+||        Count read pairs : no                                               ||
+||              Annotation : genome_gfp.gtf (GTF)                             ||
+||      Dir for temp files : .                                                ||
+||                 Threads : 1                                                ||
+||                   Level : meta-feature level                               ||
+||      Multimapping reads : not counted                                      ||
+|| Multi-overlapping reads : not counted                                      ||
+||   Min overlapping bases : 1                                                ||
+||        Duplicated Reads : ignored                                          ||
+||                                                                            ||
+\\============================================================================//
+
+//================================= Running ==================================\\
+||                                                                            ||
+|| Load annotation file genome_gfp.gtf ...                                    ||
+||    Features : 130                                                          ||
+||    Meta-features : 125                                                     ||
+||    Chromosomes/contigs : 2                                                 ||
+||                                                                            ||
+|| Process BAM file RAP1_UNINDUCED_REP1.markdup.sorted.bam...                 ||
+||    Strand specific : reversely stranded                                    ||
+||    Single-end reads are included.                                          ||
+||    Total alignments : 48977                                                ||
+||    Successfully assigned alignments : 9762 (19.9%)                         ||
+||    Running time : 0.00 minutes                                             ||
+||                                                                            ||
+|| Write the final count table.                                               ||
+|| Write the read assignment summary.                                         ||
+||                                                                            ||
+\\============================================================================//
+
+null device 
+          1 
+null device 
+          1 
+null device 
+          1 

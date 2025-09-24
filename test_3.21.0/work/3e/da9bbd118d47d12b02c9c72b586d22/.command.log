@@ -1,0 +1,43 @@
+Unable to find image 'quay.io/biocontainers/qualimap:2.3--hdfd78af_0' locally
+2.3--hdfd78af_0: Pulling from biocontainers/qualimap
+53aaa050dfb0: Pulling fs layer
+53aaa050dfb0: Download complete
+Digest: sha256:49d81e27bf995d0ef72ae46c79c22c8c779e21573cd76f7b60cf3f73af61b087
+Status: Downloaded newer image for quay.io/biocontainers/qualimap:2.3--hdfd78af_0
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+Java memory size is set to 12288M
+Launching application...
+
+Picked up _JAVA_OPTIONS: -Djava.io.tmpdir=./tmp
+QualiMap v.2.3
+Built on 2023-05-19 16:57
+
+Selected tool: rnaseq
+Initializing regions from genome_gfp.gtf...
+
+
+Initialized 600 regions it total
+
+Starting constructing transcripts for RNA-seq stats...
+Finished constructing transcripts
+
+Starting BAM file analysis
+
+Sorting BAM file by name...
+
+Finished reading inputs, merging and writing to output now.
+Sorting by name finished.
+
+Counted 44367 read pairs, 1 single reads
+
+Processed 93895 reads in total
+
+Cleanup of temporary files
+
+BAM file analysis finished
+Creating plots
+Writing HTML report...
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+HTML report created successfully
+

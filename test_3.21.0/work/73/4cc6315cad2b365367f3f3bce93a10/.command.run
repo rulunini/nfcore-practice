@@ -1,0 +1,491 @@
+#!/bin/bash
+### ---
+### name: 'NFCORE_RNASEQ:RNASEQ:MULTIQC (1)'
+### container: 'community.wave.seqera.io/library/multiqc:1.31--1efbafd542a23882'
+### outputs:
+### - '*multiqc_report.html'
+### - '*_data'
+### - '*_plots'
+### - 'versions.yml'
+### ...
+set -e
+set -u
+NXF_DEBUG=${NXF_DEBUG:=0}; [[ $NXF_DEBUG > 1 ]] && set -x
+NXF_ENTRY=${1:-nxf_main}
+
+nxf_tree() {
+    local pid=$1
+
+    declare -a ALL_CHILDREN
+    while read P PP;do
+        ALL_CHILDREN[$PP]+=" $P"
+    done < <(ps -e -o pid= -o ppid=)
+
+    pstat() {
+        local x_pid=$1
+        local STATUS=$(2> /dev/null < /proc/$1/status grep -E 'Vm|ctxt')
+
+        if [ $? = 0 ]; then
+        local  x_vsz=$(echo "$STATUS" | grep VmSize | awk '{print $2}' || echo -n '0')
+        local  x_rss=$(echo "$STATUS" | grep VmRSS | awk '{print $2}' || echo -n '0')
+        local x_peak=$(echo "$STATUS" | grep -E 'VmPeak|VmHWM' | sed 's/^.*:\s*//' | sed 's/[\sa-zA-Z]*$//' | tr '\n' ' ' || echo -n '0 0')
+        local x_pmem=$(awk -v rss=$x_rss -v mem_tot=$mem_tot 'BEGIN {printf "%.0f", rss/mem_tot*100*10}' || echo -n '0')
+        local vol_ctxt=$(echo "$STATUS" | grep '\bvoluntary_ctxt_switches' | awk '{print $2}' || echo -n '0')
+        local inv_ctxt=$(echo "$STATUS" | grep '\bnonvoluntary_ctxt_switches' | awk '{print $2}' || echo -n '0')
+        cpu_stat[x_pid]="$x_pid $x_pmem $x_vsz $x_rss $x_peak $vol_ctxt $inv_ctxt"
+        fi
+    }
+
+    pwalk() {
+        pstat $1
+        for i in ${ALL_CHILDREN[$1]:=}; do pwalk $i; done
+    }
+
+    pwalk $1
+}
+
+nxf_stat() {
+    cpu_stat=()
+    nxf_tree $1
+
+    declare -a sum=(0 0 0 0 0 0 0 0)
+    local pid
+    local i
+    for pid in "${!cpu_stat[@]}"; do
+        local row=(${cpu_stat[pid]})
+        [ $NXF_DEBUG = 1 ] && echo "++ stat mem=${row[*]}"
+        for i in "${!row[@]}"; do
+        if [ $i != 0 ]; then
+            sum[i]=$((sum[i]+row[i]))
+        fi
+        done
+    done
+
+    [ $NXF_DEBUG = 1 ] && echo -e "++ stat SUM=${sum[*]}"
+
+    for i in {1..7}; do
+        if [ ${sum[i]} -lt ${cpu_peak[i]} ]; then
+            sum[i]=${cpu_peak[i]}
+        else
+            cpu_peak[i]=${sum[i]}
+        fi
+    done
+
+    [ $NXF_DEBUG = 1 ] && echo -e "++ stat PEAK=${sum[*]}\n"
+    nxf_stat_ret=(${sum[*]})
+}
+
+nxf_mem_watch() {
+    set -o pipefail
+    local pid=$1
+    local trace_file=.command.trace
+    local count=0;
+    declare -a cpu_stat=(0 0 0 0 0 0 0 0)
+    declare -a cpu_peak=(0 0 0 0 0 0 0 0)
+    local mem_tot=$(< /proc/meminfo grep MemTotal | awk '{print $2}')
+    local timeout
+    local DONE
+    local STOP=''
+
+    [ $NXF_DEBUG = 1 ] && nxf_sleep 0.2 && ps fx
+
+    while true; do
+        nxf_stat $pid
+        if [ $count -lt 10 ]; then timeout=1;
+        elif [ $count -lt 120 ]; then timeout=5;
+        else timeout=30;
+        fi
+        read -t $timeout -r DONE || true
+        [[ $DONE ]] && break
+        if [ ! -e /proc/$pid ]; then
+            [ ! $STOP ] && STOP=$(nxf_date)
+            [ $(($(nxf_date)-STOP)) -gt 10000 ] && break
+        fi
+        count=$((count+1))
+    done
+
+    printf "%s\n" \
+        "%mem=${nxf_stat_ret[1]}" \
+        "vmem=${nxf_stat_ret[2]}" \
+        "rss=${nxf_stat_ret[3]}" \
+        "peak_vmem=${nxf_stat_ret[4]}" \
+        "peak_rss=${nxf_stat_ret[5]}" \
+        "vol_ctxt=${nxf_stat_ret[6]}" \
+        "inv_ctxt=${nxf_stat_ret[7]}" >> "$trace_file" || >&2 echo "Error: Failed to append to file: $trace_file"
+}
+
+nxf_write_trace() {
+    printf "%s\n" \
+        "nextflow.trace/v2" \
+        "realtime=$wall_time" \
+        "%cpu=$ucpu" \
+        "cpu_model=$cpu_model" \
+        "rchar=${io_stat1[0]}" \
+        "wchar=${io_stat1[1]}" \
+        "syscr=${io_stat1[2]}" \
+        "syscw=${io_stat1[3]}" \
+        "read_bytes=${io_stat1[4]}" \
+        "write_bytes=${io_stat1[5]}" >| "$trace_file" || >&2 echo "Error: Failed to write to file: $trace_file"
+}
+
+nxf_trace_mac() {
+    local start_millis=$(nxf_date)
+
+    /usr/bin/env bash -C -e -u -o pipefail /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/73/4cc6315cad2b365367f3f3bce93a10/.command.sh
+
+    local end_millis=$(nxf_date)
+    local wall_time=$((end_millis-start_millis))
+    local ucpu=''
+    local cpu_model=''
+    local io_stat1=('' '' '' '' '' '')
+    nxf_write_trace
+}
+
+nxf_fd() {
+    local FD=11
+    while [ -e /proc/$$/fd/$FD ]; do FD=$((FD+1)); done
+    echo $FD
+}
+
+nxf_trace_linux() {
+    local pid=$$
+    command -v ps &>/dev/null || { >&2 echo "Command 'ps' required by nextflow to collect task metrics cannot be found"; exit 1; }
+    local num_cpus=$(< /proc/cpuinfo grep '^processor' -c)
+    local cpu_model=$(< /proc/cpuinfo grep '^model name' | head -n 1 | awk 'BEGIN{FS="\t: "} { print $2 }')
+    local tot_time0=$(grep '^cpu ' /proc/stat | awk '{sum=$2+$3+$4+$5+$6+$7+$8+$9; printf "%.0f",sum}')
+    local cpu_time0=$(2> /dev/null < /proc/$pid/stat awk '{printf "%.0f", ($16+$17)*10 }' || echo -n 'X')
+    local io_stat0=($(2> /dev/null < /proc/$pid/io sed 's/^.*:\s*//' | head -n 6 | tr '\n' ' ' || echo -n '0 0 0 0 0 0'))
+    local start_millis=$(nxf_date)
+    trap 'kill $mem_proc' ERR
+    
+    /usr/bin/env bash -C -e -u -o pipefail /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/73/4cc6315cad2b365367f3f3bce93a10/.command.sh &
+    local task=$!
+
+    mem_fd=$(nxf_fd)
+    eval "exec $mem_fd> >(nxf_mem_watch $task)"
+    local mem_proc=$!
+
+    wait $task
+
+    local end_millis=$(nxf_date)
+    local tot_time1=$(grep '^cpu ' /proc/stat | awk '{sum=$2+$3+$4+$5+$6+$7+$8+$9; printf "%.0f",sum}')
+    local cpu_time1=$(2> /dev/null < /proc/$pid/stat awk '{printf "%.0f", ($16+$17)*10 }' || echo -n 'X')
+    local ucpu=$(awk -v p1=$cpu_time1 -v p0=$cpu_time0 -v t1=$tot_time1 -v t0=$tot_time0 -v n=$num_cpus 'BEGIN { pct=(p1-p0)/(t1-t0)*100*n; printf("%.0f", pct>0 ? pct : 0) }' )
+
+    local io_stat1=($(2> /dev/null < /proc/$pid/io sed 's/^.*:\s*//' | head -n 6 | tr '\n' ' ' || echo -n '0 0 0 0 0 0'))
+    local i
+    for i in {0..5}; do
+        io_stat1[i]=$((io_stat1[i]-io_stat0[i]))
+    done
+
+    local wall_time=$((end_millis-start_millis))
+    [ $NXF_DEBUG = 1 ] && echo "+++ STATS %CPU=$ucpu TIME=$wall_time I/O=${io_stat1[*]}"
+
+    printf "%s\n" \
+        "nextflow.trace/v2" \
+        "realtime=$wall_time" \
+        "%cpu=$ucpu" \
+        "cpu_model=$cpu_model" \
+        "rchar=${io_stat1[0]}" \
+        "wchar=${io_stat1[1]}" \
+        "syscr=${io_stat1[2]}" \
+        "syscw=${io_stat1[3]}" \
+        "read_bytes=${io_stat1[4]}" \
+        "write_bytes=${io_stat1[5]}" >| "$trace_file" || >&2 echo "Error: Failed to write to file: $trace_file"
+
+    [ -e /proc/$mem_proc ] && eval "echo 'DONE' >&$mem_fd" || true
+    wait $mem_proc 2>/dev/null || true
+    while [ -e /proc/$mem_proc ]; do nxf_sleep 0.1; done
+}
+
+nxf_trace() {
+    local trace_file=.command.trace
+    touch $trace_file
+    if [[ $(uname) = Darwin ]]; then
+        nxf_trace_mac
+    else
+        nxf_trace_linux
+    fi
+}
+nxf_container_env() {
+cat << EOF
+export PYTHONNOUSERSITE="1"
+export R_PROFILE_USER="/.Rprofile"
+export R_ENVIRON_USER="/.Renviron"
+export JULIA_DEPOT_PATH="/usr/local/share/julia"
+export PATH="\$PATH:/Users/sohee/.nextflow/assets/nf-core/rnaseq/bin"
+EOF
+}
+
+nxf_sleep() {
+  sleep $1 2>/dev/null || sleep 1;
+}
+
+nxf_date() {
+    local ts=$(date +%s%3N);
+    if [[ ${#ts} == 10 ]]; then echo ${ts}000
+    elif [[ $ts == *%3N ]]; then echo ${ts/\%3N/000}
+    elif [[ $ts == *3N ]]; then echo ${ts/3N/000}
+    elif [[ ${#ts} == 13 ]]; then echo $ts
+    else echo "Unexpected timestamp value: $ts"; exit 1
+    fi
+}
+
+nxf_env() {
+    echo '============= task environment ============='
+    env | sort | sed "s/\(.*\)AWS\(.*\)=\(.\{6\}\).*/\1AWS\2=\3xxxxxxxxxxxxx/"
+    echo '============= task output =================='
+}
+
+nxf_kill() {
+    declare -a children
+    while read P PP;do
+        children[$PP]+=" $P"
+    done < <(ps -e -o pid= -o ppid=)
+
+    kill_all() {
+        [[ $1 != $$ ]] && kill $1 2>/dev/null || true
+        for i in ${children[$1]:=}; do kill_all $i; done
+    }
+
+    kill_all $1
+}
+
+nxf_mktemp() {
+    local base=${1:-/tmp}
+    mkdir -p "$base"
+    if [[ $(uname) = Darwin ]]; then mktemp -d $base/nxf.XXXXXXXXXX
+    else TMPDIR="$base" mktemp -d -t nxf.XXXXXXXXXX
+    fi
+}
+
+nxf_fs_copy() {
+  local source=$1
+  local target=$2
+  local basedir=$(dirname $1)
+  mkdir -p $target/$basedir
+  cp -fRL $source $target/$basedir
+}
+
+nxf_fs_move() {
+  local source=$1
+  local target=$2
+  local basedir=$(dirname $1)
+  mkdir -p $target/$basedir
+  mv -f $source $target/$basedir
+}
+
+nxf_fs_rsync() {
+  rsync -rRl $1 $2
+}
+
+nxf_fs_rclone() {
+  rclone copyto $1 $2/$1
+}
+
+nxf_fs_fcp() {
+  fcp $1 $2/$1
+}
+
+on_exit() {
+    local last_err=$?
+    local exit_status=${nxf_main_ret:=0}
+    [[ ${exit_status} -eq 0 && ${nxf_unstage_ret:=0} -ne 0 ]] && exit_status=${nxf_unstage_ret:=0}
+    [[ ${exit_status} -eq 0 && ${last_err} -ne 0 ]] && exit_status=${last_err}
+    printf -- $exit_status > /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/73/4cc6315cad2b365367f3f3bce93a10/.exitcode
+    set +u
+    docker rm $NXF_BOXID &>/dev/null || true
+    exit $exit_status
+}
+
+on_term() {
+    set +e
+    docker stop $NXF_BOXID
+}
+
+nxf_launch() {
+    docker run -i --cpu-shares 1024 --memory 6144m -e "NXF_TASK_WORKDIR" -e "NXF_DEBUG=${NXF_DEBUG:=0}" -v /Users/sohee:/Users/sohee -w "$NXF_TASK_WORKDIR" -u $(id -u):$(id -g) --name $NXF_BOXID community.wave.seqera.io/library/multiqc:1.31--1efbafd542a23882 /bin/bash -c "eval $(nxf_container_env); bash -C -e -u -o pipefail /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/73/4cc6315cad2b365367f3f3bce93a10/.command.run nxf_trace"
+}
+
+nxf_stage() {
+    true
+    # stage input files
+    mkdir -p 11 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/45/09aac0b3acb25c736925f94a04e853/WT_REP2_trimmed_2_val_2_fastqc.zip 11/WT_REP2_trimmed_2_val_2_fastqc.zip
+    mkdir -p 32 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/39/eb2313f3883e84fbbe56d0b2c9d6b9/RAP1_UNINDUCED_REP1.Log.final.out 32/RAP1_UNINDUCED_REP1.Log.final.out
+    mkdir -p 94 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/8e/f993714308d7e4082d0faf5422267f/RAP1_UNINDUCED_REP2.markdup.sorted.bam.flagstat 94/RAP1_UNINDUCED_REP2.markdup.sorted.bam.flagstat
+    mkdir -p 116 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/bb/1c3951328f1790cf809393b09f4755/RAP1_UNINDUCED_REP2.bam_stat.txt 116/RAP1_UNINDUCED_REP2.bam_stat.txt
+    mkdir -p 30 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/2c/47aeae8550797ed088233f7c2e9ea3/WT_REP1 30/WT_REP1
+    mkdir -p 53 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/ce/5cfeb97e12cd582bca44186f3f03d7/WT_REP2.sorted.bam.idxstats 53/WT_REP2.sorted.bam.idxstats
+    mkdir -p 66 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/39/ce703cfa817dfdd17b30bf6fa0d60c/RAP1_UNINDUCED_REP2_duprateExpDensCurve_mqc.txt 66/RAP1_UNINDUCED_REP2_duprateExpDensCurve_mqc.txt
+    mkdir -p 41 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/2c/64bd3c581b8e665883c134734d1c66/RAP1_UNINDUCED_REP1.sorted.bam.stats 41/RAP1_UNINDUCED_REP1.sorted.bam.stats
+    mkdir -p 102 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/94/551cec83d909fc344f2d10940876c7/RAP1_UNINDUCED_REP1.infer_experiment.txt 102/RAP1_UNINDUCED_REP1.infer_experiment.txt
+    mkdir -p 45 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/ce/00758736a1a610b66e502076c5ff6e/RAP1_UNINDUCED_REP2.sorted.bam.flagstat 45/RAP1_UNINDUCED_REP2.sorted.bam.flagstat
+    mkdir -p 110 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/4f/69eca7cf7ff3e4796e9cbc9493109e/RAP1_IAA_30M_REP1.junctionSaturation_plot.r 110/RAP1_IAA_30M_REP1.junctionSaturation_plot.r
+    mkdir -p 114 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/3f/42fbc2a1e63fcf9eeeff1e0b89944f/WT_REP2.bam_stat.txt 114/WT_REP2.bam_stat.txt
+    mkdir -p 7 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/e0/7ac174b0d99c7f5c397ea2a90f2b19/RAP1_UNINDUCED_REP1_trimmed_trimmed_fastqc.zip 7/RAP1_UNINDUCED_REP1_trimmed_trimmed_fastqc.zip
+    mkdir -p 34 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/df/7a771ed33c2ba4166156ab840e854d/RAP1_IAA_30M_REP1.Log.final.out 34/RAP1_IAA_30M_REP1.Log.final.out
+    mkdir -p 2 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/tmp/e2/18aadc4553887bff7b5bc488baa84c/workflow_summary_mqc.yaml 2/workflow_summary_mqc.yaml
+    mkdir -p 80 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/90/f8083209998130a20453f45d8e1012/WT_REP1.biotype_counts_rrna_mqc.tsv 80/WT_REP1.biotype_counts_rrna_mqc.tsv
+    mkdir -p 98 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/3e/da9bbd118d47d12b02c9c72b586d22/WT_REP2 98/WT_REP2
+    mkdir -p 90 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/87/7654db14aa989b1efe5f451fab60d1/WT_REP1.markdup.sorted.bam.idxstats 90/WT_REP1.markdup.sorted.bam.idxstats
+    mkdir -p 26 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/63/b815a951b5ea6122b0a1a6d8a2d534/WT_REP1_trimmed_2_val_2_fastqc.zip 26/WT_REP1_trimmed_2_val_2_fastqc.zip
+    mkdir -p 42 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/16/de21e7f0d7a30ab7b77ed14c5a2292/RAP1_IAA_30M_REP1.sorted.bam.stats 42/RAP1_IAA_30M_REP1.sorted.bam.stats
+    mkdir -p 100 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/18/ad8abfdfb2e22e0de572cda575c5af/RAP1_UNINDUCED_REP2 100/RAP1_UNINDUCED_REP2
+    mkdir -p 115 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/65/69d89b9ae29751cd9e228ff0eb3b9c/RAP1_IAA_30M_REP1.bam_stat.txt 115/RAP1_IAA_30M_REP1.bam_stat.txt
+    mkdir -p 6 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/e0/7ac174b0d99c7f5c397ea2a90f2b19/RAP1_UNINDUCED_REP1_trimmed.fastq.gz_trimming_report.txt 6/RAP1_UNINDUCED_REP1_trimmed.fastq.gz_trimming_report.txt
+    mkdir -p 35 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/9b/bbd1f08deed2611928de25149891c9/RAP1_UNINDUCED_REP2.Log.final.out 35/RAP1_UNINDUCED_REP2.Log.final.out
+    mkdir -p 86 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/cb/7746b20b8010026ca022bfdf877e57/WT_REP2.markdup.sorted.bam.idxstats 86/WT_REP2.markdup.sorted.bam.idxstats
+    ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/tmp/e7/c960e2de34cf00abb44c3737217d4a/name_replacement.txt name_replacement.txt
+    mkdir -p 108 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/a3/e9cdb6d224cdec166dfe68d5ccc50c/RAP1_UNINDUCED_REP1.junctionSaturation_plot.r 108/RAP1_UNINDUCED_REP1.junctionSaturation_plot.r
+    mkdir -p 99 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/d1/8dc12b903367f193144e828773e344/RAP1_IAA_30M_REP1 99/RAP1_IAA_30M_REP1
+    mkdir -p 28 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/c6/21d0265ae9f6f552d5d67c961dd455/WT_REP2 28/WT_REP2
+    mkdir -p 71 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/c8/dc65454c5c2f453970104572ba48d7/RAP1_UNINDUCED_REP1.biotype_counts_mqc.tsv 71/RAP1_UNINDUCED_REP1.biotype_counts_mqc.tsv
+    mkdir -p 83 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/39/3b0e8846c9836e80dd75b3eba60c48/RAP1_IAA_30M_REP1.markdup.sorted.bam.stats 83/RAP1_IAA_30M_REP1.markdup.sorted.bam.stats
+    mkdir -p 107 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/tmp/93/41ce2bc21b5ec14b66d79b2b37e41e/fail_strand_check_mqc.tsv 107/fail_strand_check_mqc.tsv
+    mkdir -p 48 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/b9/3100af256613502e6c470da0e495dc/WT_REP2.sorted.bam.flagstat 48/WT_REP2.sorted.bam.flagstat
+    mkdir -p 79 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/90/f8083209998130a20453f45d8e1012/WT_REP1.biotype_counts_mqc.tsv 79/WT_REP1.biotype_counts_mqc.tsv
+    mkdir -p 29 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/7e/ebee6a0b816e22bc024f4b5dbcce11/RAP1_IAA_30M_REP1 29/RAP1_IAA_30M_REP1
+    mkdir -p 129 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/e6/da0fdcbede44d1f6facfaecc95e997/WT_REP2.junction_annotation.log 129/WT_REP2.junction_annotation.log
+    mkdir -p 19 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/6b/18beae56f00969ab87c4a1a3a3504a/RAP1_IAA_30M_REP1_trimmed_1_val_1_fastqc.zip 19/RAP1_IAA_30M_REP1_trimmed_1_val_1_fastqc.zip
+    mkdir -p 81 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/84/6d0b6026ae88ecd6f121c7e4d2748d/RAP1_UNINDUCED_REP1.markdup.sorted.bam.stats 81/RAP1_UNINDUCED_REP1.markdup.sorted.bam.stats
+    mkdir -p 127 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/e9/11bdcd5f8400d432d8ca644689c23b/WT_REP1.read_distribution.txt 127/WT_REP1.read_distribution.txt
+    mkdir -p 31 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/a2/e8a7cbae3123f450135f59a4a8f29d/RAP1_UNINDUCED_REP2 31/RAP1_UNINDUCED_REP2
+    mkdir -p 13 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/7c/7b915bce8ed5e2c9b83a2adad1b583/RAP1_IAA_30M_REP1_raw_1_fastqc.zip 13/RAP1_IAA_30M_REP1_raw_1_fastqc.zip
+    mkdir -p 74 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/5d/99b687dcf228669f671a25265dccc3/WT_REP2.biotype_counts_rrna_mqc.tsv 74/WT_REP2.biotype_counts_rrna_mqc.tsv
+    mkdir -p 125 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/d8/0592d92dc5c73bcb769328165c057f/RAP1_IAA_30M_REP1.read_distribution.txt 125/RAP1_IAA_30M_REP1.read_distribution.txt
+    mkdir -p 124 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/af/f434c9e4fa0a749323302debc1b7e2/WT_REP2.read_distribution.txt 124/WT_REP2.read_distribution.txt
+    mkdir -p 132 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/d1/65101b63622ff17fc6881da7655b99/WT_REP1.junction_annotation.log 132/WT_REP1.junction_annotation.log
+    mkdir -p 131 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/9f/e857cb198eaa0bf899bf2cef899b9c/RAP1_UNINDUCED_REP2.junction_annotation.log 131/RAP1_UNINDUCED_REP2.junction_annotation.log
+    mkdir -p 67 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/23/6fddc85cef5b7763dcb190648f70ec/WT_REP1_dup_intercept_mqc.txt 67/WT_REP1_dup_intercept_mqc.txt
+    mkdir -p 47 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/60/4236bf4f8ffe46867ebc67fc9a73d4/RAP1_IAA_30M_REP1.sorted.bam.flagstat 47/RAP1_IAA_30M_REP1.sorted.bam.flagstat
+    mkdir -p 15 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/c0/b1cd780916f8ba207ef754af2dfb3d/RAP1_UNINDUCED_REP2_trimmed.fastq.gz_trimming_report.txt 15/RAP1_UNINDUCED_REP2_trimmed.fastq.gz_trimming_report.txt
+    mkdir -p 69 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/5c/c37c4be0dc8e7ca108c4470d6bf477/star_salmon.pca.vals_mqc.tsv 69/star_salmon.pca.vals_mqc.tsv
+    mkdir -p 119 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/0d/e659b63c485a7f3f9b917a36bc78e9/WT_REP2.pos.DupRate.xls 119/WT_REP2.pos.DupRate.xls
+    mkdir -p 54 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/9a/b5e935fc2067f1b62018c1df20bbe9/RAP1_UNINDUCED_REP1.markdup.sorted.MarkDuplicates.metrics.txt 54/RAP1_UNINDUCED_REP1.markdup.sorted.MarkDuplicates.metrics.txt
+    mkdir -p 12 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/31/52b30b15d28c68e21dd81abc8c29f2/RAP1_UNINDUCED_REP2_raw_fastqc.zip 12/RAP1_UNINDUCED_REP2_raw_fastqc.zip
+    mkdir -p 122 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/ea/362f800596104c77b10f4f8e5a283b/WT_REP1.pos.DupRate.xls 122/WT_REP1.pos.DupRate.xls
+    mkdir -p 123 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/16/98c69813f29527b4ec5386e7c6401d/RAP1_UNINDUCED_REP1.read_distribution.txt 123/RAP1_UNINDUCED_REP1.read_distribution.txt
+    mkdir -p 51 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/95/72b199b1d7bb3dcf373d49bf047ea2/RAP1_UNINDUCED_REP2.sorted.bam.idxstats 51/RAP1_UNINDUCED_REP2.sorted.bam.idxstats
+    mkdir -p 84 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/a8/d926fa9d8806ddeb152f43c67e7268/WT_REP1.markdup.sorted.bam.stats 84/WT_REP1.markdup.sorted.bam.stats
+    mkdir -p 95 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/31/351a9cbfe0ac3ba4898aa54a426fb3/RAP1_IAA_30M_REP1.markdup.sorted.bam.flagstat 95/RAP1_IAA_30M_REP1.markdup.sorted.bam.flagstat
+    mkdir -p 130 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/77/809e1f4d493c3c57d071ddd53c323b/RAP1_IAA_30M_REP1.junction_annotation.log 130/RAP1_IAA_30M_REP1.junction_annotation.log
+    ln -s /Users/sohee/.nextflow/assets/nf-core/rnaseq/workflows/rnaseq/assets/multiqc/multiqc_config.yml multiqc_config.yml
+    mkdir -p 96 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/pipeline_info/nf_core_rnaseq_software_mqc_versions.yml 96/nf_core_rnaseq_software_mqc_versions.yml
+    mkdir -p 135 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/fd/9894cc1e94c79f09967d1f1bcad215/WT_REP1.inner_distance_freq.txt 135/WT_REP1.inner_distance_freq.txt
+    mkdir -p 75 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/c4/ce6d0899841d1d69c281b2a08f6231/RAP1_IAA_30M_REP1.biotype_counts_mqc.tsv 75/RAP1_IAA_30M_REP1.biotype_counts_mqc.tsv
+    mkdir -p 109 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/16/fddf5eeb96a182a881e3d61ef84fa3/WT_REP2.junctionSaturation_plot.r 109/WT_REP2.junctionSaturation_plot.r
+    mkdir -p 118 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/a7/fa1aacd44dbf394bcee2eeac4940c5/RAP1_UNINDUCED_REP1.pos.DupRate.xls 118/RAP1_UNINDUCED_REP1.pos.DupRate.xls
+    mkdir -p 24 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/63/b815a951b5ea6122b0a1a6d8a2d534/WT_REP1_trimmed_2.fastq.gz_trimming_report.txt 24/WT_REP1_trimmed_2.fastq.gz_trimming_report.txt
+    mkdir -p 50 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/b3/7f4989c42b28c429f7cb17e327c1f6/WT_REP1.sorted.bam.idxstats 50/WT_REP1.sorted.bam.idxstats
+    mkdir -p 128 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/62/8894f1454862c15093546efa51e7e4/RAP1_UNINDUCED_REP1.junction_annotation.log 128/RAP1_UNINDUCED_REP1.junction_annotation.log
+    mkdir -p 62 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/09/2dddfb83b1f53645c8a96573dd1d46/WT_REP2_duprateExpDensCurve_mqc.txt 62/WT_REP2_duprateExpDensCurve_mqc.txt
+    mkdir -p 17 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/6b/18beae56f00969ab87c4a1a3a3504a/RAP1_IAA_30M_REP1_trimmed_1.fastq.gz_trimming_report.txt 17/RAP1_IAA_30M_REP1_trimmed_1.fastq.gz_trimming_report.txt
+    mkdir -p 43 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/f5/d6e6a333da5d48d5c27549aa7c157d/WT_REP1.sorted.bam.stats 43/WT_REP1.sorted.bam.stats
+    mkdir -p 23 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/63/b815a951b5ea6122b0a1a6d8a2d534/WT_REP1_trimmed_1.fastq.gz_trimming_report.txt 23/WT_REP1_trimmed_1.fastq.gz_trimming_report.txt
+    mkdir -p 44 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/70/9d827311d7bbd6b7b4cc545c8869d5/WT_REP1.sorted.bam.flagstat 44/WT_REP1.sorted.bam.flagstat
+    mkdir -p 46 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/13/11c7d67d8787c7cd23ea1c7bb470f1/RAP1_UNINDUCED_REP1.sorted.bam.flagstat 46/RAP1_UNINDUCED_REP1.sorted.bam.flagstat
+    mkdir -p 55 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/25/5b8f248ae607aa74291472e510147e/WT_REP2.markdup.sorted.MarkDuplicates.metrics.txt 55/WT_REP2.markdup.sorted.MarkDuplicates.metrics.txt
+    mkdir -p 37 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/6f/e179aa8444e015c19fc3db15e21894/salmon.sample.dists_mqc.tsv 37/salmon.sample.dists_mqc.tsv
+    mkdir -p 27 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/09/bdef2fcacca7b6ab76120b906c5493/RAP1_UNINDUCED_REP1 27/RAP1_UNINDUCED_REP1
+    mkdir -p 73 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/5d/99b687dcf228669f671a25265dccc3/WT_REP2.biotype_counts_mqc.tsv 73/WT_REP2.biotype_counts_mqc.tsv
+    mkdir -p 63 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/1e/12728baa581ea6e58af4bc9621c3a4/RAP1_IAA_30M_REP1_dup_intercept_mqc.txt 63/RAP1_IAA_30M_REP1_dup_intercept_mqc.txt
+    mkdir -p 59 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/0c/f25dec3f93888178f3a0a165a3eb91/RAP1_UNINDUCED_REP1_dup_intercept_mqc.txt 59/RAP1_UNINDUCED_REP1_dup_intercept_mqc.txt
+    mkdir -p 91 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/10/44f5fd8d5f1cf0ffaaef2aede40741/RAP1_UNINDUCED_REP1.markdup.sorted.bam.flagstat 91/RAP1_UNINDUCED_REP1.markdup.sorted.bam.flagstat
+    mkdir -p 101 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/4d/dcb6e3724a328a7f2d64cbdef083ea/WT_REP1 101/WT_REP1
+    mkdir -p 68 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/23/6fddc85cef5b7763dcb190648f70ec/WT_REP1_duprateExpDensCurve_mqc.txt 68/WT_REP1_duprateExpDensCurve_mqc.txt
+    mkdir -p 58 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/c2/d47e8270c07c55e28aa062828c9a46/WT_REP1.markdup.sorted.MarkDuplicates.metrics.txt 58/WT_REP1.markdup.sorted.MarkDuplicates.metrics.txt
+    mkdir -p 105 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/40/b1983f7a2122682e50473455997a90/RAP1_UNINDUCED_REP2.infer_experiment.txt 105/RAP1_UNINDUCED_REP2.infer_experiment.txt
+    mkdir -p 88 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/1e/4c4baef4956f501d4fa8592cbc81eb/RAP1_UNINDUCED_REP2.markdup.sorted.bam.idxstats 88/RAP1_UNINDUCED_REP2.markdup.sorted.bam.idxstats
+    mkdir -p 93 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/a9/d80ca4e15406ca36a7d38e1bad93ed/WT_REP1.markdup.sorted.bam.flagstat 93/WT_REP1.markdup.sorted.bam.flagstat
+    mkdir -p 70 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/5c/c37c4be0dc8e7ca108c4470d6bf477/star_salmon.sample.dists_mqc.tsv 70/star_salmon.sample.dists_mqc.tsv
+    mkdir -p 1 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/tmp/fb/6848f6526bf6c1e670a4a422f25981/methods_description_mqc.yaml 1/methods_description_mqc.yaml
+    mkdir -p 36 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/03/aa6086b500e30ab997cbfff91cb32b/WT_REP1.Log.final.out 36/WT_REP1.Log.final.out
+    mkdir -p 103 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/70/d5f106566b582f3982ad42a8a028ce/WT_REP2.infer_experiment.txt 103/WT_REP2.infer_experiment.txt
+    mkdir -p 113 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/c5/ea0df63bcdc45a8a8b23db44701bcb/RAP1_UNINDUCED_REP1.bam_stat.txt 113/RAP1_UNINDUCED_REP1.bam_stat.txt
+    mkdir -p 77 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/18/a2b6c048244e5e85ec14d8ebb12268/RAP1_UNINDUCED_REP2.biotype_counts_mqc.tsv 77/RAP1_UNINDUCED_REP2.biotype_counts_mqc.tsv
+    mkdir -p 49 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/3c/f06b67ec3fda716d6dd058744629e9/RAP1_IAA_30M_REP1.sorted.bam.idxstats 49/RAP1_IAA_30M_REP1.sorted.bam.idxstats
+    mkdir -p 38 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/6f/e179aa8444e015c19fc3db15e21894/salmon.pca.vals_mqc.tsv 38/salmon.pca.vals_mqc.tsv
+    mkdir -p 120 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/24/417fa5c73042cca82399f2dd90bca0/RAP1_IAA_30M_REP1.pos.DupRate.xls 120/RAP1_IAA_30M_REP1.pos.DupRate.xls
+    mkdir -p 111 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/e3/dbf26e307b28c63d67585ffa93168e/RAP1_UNINDUCED_REP2.junctionSaturation_plot.r 111/RAP1_UNINDUCED_REP2.junctionSaturation_plot.r
+    mkdir -p 20 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/6b/18beae56f00969ab87c4a1a3a3504a/RAP1_IAA_30M_REP1_trimmed_2_val_2_fastqc.zip 20/RAP1_IAA_30M_REP1_trimmed_2_val_2_fastqc.zip
+    mkdir -p 39 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/ca/bc07c2a821ef65b2ccee8bbd24b2ca/RAP1_UNINDUCED_REP2.sorted.bam.stats 39/RAP1_UNINDUCED_REP2.sorted.bam.stats
+    mkdir -p 8 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/45/09aac0b3acb25c736925f94a04e853/WT_REP2_trimmed_1.fastq.gz_trimming_report.txt 8/WT_REP2_trimmed_1.fastq.gz_trimming_report.txt
+    mkdir -p 61 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/09/2dddfb83b1f53645c8a96573dd1d46/WT_REP2_dup_intercept_mqc.txt 61/WT_REP2_dup_intercept_mqc.txt
+    mkdir -p 22 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/5f/c3cfd1bb49f140df3327c4509a3c32/WT_REP1_raw_2_fastqc.zip 22/WT_REP1_raw_2_fastqc.zip
+    mkdir -p 97 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/8f/6c618621df0d716a78d726e010e66b/RAP1_UNINDUCED_REP1 97/RAP1_UNINDUCED_REP1
+    mkdir -p 56 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/6c/d2dadad1de8eebd8542e915392e3e5/RAP1_IAA_30M_REP1.markdup.sorted.MarkDuplicates.metrics.txt 56/RAP1_IAA_30M_REP1.markdup.sorted.MarkDuplicates.metrics.txt
+    mkdir -p 9 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/45/09aac0b3acb25c736925f94a04e853/WT_REP2_trimmed_2.fastq.gz_trimming_report.txt 9/WT_REP2_trimmed_2.fastq.gz_trimming_report.txt
+    mkdir -p 112 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/37/1bf04706692ad0c81b5b21ba57d585/WT_REP1.junctionSaturation_plot.r 112/WT_REP1.junctionSaturation_plot.r
+    mkdir -p 3 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/90/3e39ec7039f3be672f88224cde6d36/RAP1_UNINDUCED_REP1_raw_fastqc.zip 3/RAP1_UNINDUCED_REP1_raw_fastqc.zip
+    mkdir -p 134 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/8f/951fb0412ebbfac4dc4356f10b8c02/RAP1_IAA_30M_REP1.inner_distance_freq.txt 134/RAP1_IAA_30M_REP1.inner_distance_freq.txt
+    mkdir -p 21 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/5f/c3cfd1bb49f140df3327c4509a3c32/WT_REP1_raw_1_fastqc.zip 21/WT_REP1_raw_1_fastqc.zip
+    mkdir -p 72 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/c8/dc65454c5c2f453970104572ba48d7/RAP1_UNINDUCED_REP1.biotype_counts_rrna_mqc.tsv 72/RAP1_UNINDUCED_REP1.biotype_counts_rrna_mqc.tsv
+    mkdir -p 16 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/c0/b1cd780916f8ba207ef754af2dfb3d/RAP1_UNINDUCED_REP2_trimmed_trimmed_fastqc.zip 16/RAP1_UNINDUCED_REP2_trimmed_trimmed_fastqc.zip
+    mkdir -p 65 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/39/ce703cfa817dfdd17b30bf6fa0d60c/RAP1_UNINDUCED_REP2_dup_intercept_mqc.txt 65/RAP1_UNINDUCED_REP2_dup_intercept_mqc.txt
+    mkdir -p 64 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/1e/12728baa581ea6e58af4bc9621c3a4/RAP1_IAA_30M_REP1_duprateExpDensCurve_mqc.txt 64/RAP1_IAA_30M_REP1_duprateExpDensCurve_mqc.txt
+    mkdir -p 4 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/d3/5d575b51899b8b7a11fc7261cb1d2b/WT_REP2_raw_1_fastqc.zip 4/WT_REP2_raw_1_fastqc.zip
+    mkdir -p 126 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/80/4437bcd1a95392773fa991c706a462/RAP1_UNINDUCED_REP2.read_distribution.txt 126/RAP1_UNINDUCED_REP2.read_distribution.txt
+    mkdir -p 104 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/ae/18bfa2c6012c5f1cad58f86e627bac/RAP1_IAA_30M_REP1.infer_experiment.txt 104/RAP1_IAA_30M_REP1.infer_experiment.txt
+    mkdir -p 18 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/6b/18beae56f00969ab87c4a1a3a3504a/RAP1_IAA_30M_REP1_trimmed_2.fastq.gz_trimming_report.txt 18/RAP1_IAA_30M_REP1_trimmed_2.fastq.gz_trimming_report.txt
+    mkdir -p 10 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/45/09aac0b3acb25c736925f94a04e853/WT_REP2_trimmed_1_val_1_fastqc.zip 10/WT_REP2_trimmed_1_val_1_fastqc.zip
+    mkdir -p 92 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/2d/9c9d794aa43e132cb88ea48c5375d9/WT_REP2.markdup.sorted.bam.flagstat 92/WT_REP2.markdup.sorted.bam.flagstat
+    mkdir -p 117 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/13/1c430396ac170154ba572dfd1a190f/WT_REP1.bam_stat.txt 117/WT_REP1.bam_stat.txt
+    mkdir -p 78 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/18/a2b6c048244e5e85ec14d8ebb12268/RAP1_UNINDUCED_REP2.biotype_counts_rrna_mqc.tsv 78/RAP1_UNINDUCED_REP2.biotype_counts_rrna_mqc.tsv
+    mkdir -p 52 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/e2/7cd2fd874dcf526fa365ceb162a497/RAP1_UNINDUCED_REP1.sorted.bam.idxstats 52/RAP1_UNINDUCED_REP1.sorted.bam.idxstats
+    mkdir -p 85 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/38/39cfa09adee35bb2110e674c7f0522/RAP1_UNINDUCED_REP2.markdup.sorted.bam.stats 85/RAP1_UNINDUCED_REP2.markdup.sorted.bam.stats
+    mkdir -p 82 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/15/4c5e911c33a2e801fcb70bbd6bdc26/WT_REP2.markdup.sorted.bam.stats 82/WT_REP2.markdup.sorted.bam.stats
+    mkdir -p 5 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/d3/5d575b51899b8b7a11fc7261cb1d2b/WT_REP2_raw_2_fastqc.zip 5/WT_REP2_raw_2_fastqc.zip
+    mkdir -p 57 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/ca/0207fa492367745dc931b52390a118/RAP1_UNINDUCED_REP2.markdup.sorted.MarkDuplicates.metrics.txt 57/RAP1_UNINDUCED_REP2.markdup.sorted.MarkDuplicates.metrics.txt
+    mkdir -p 87 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/a8/73345700cdafeb3f4ebd79c9a9d579/RAP1_IAA_30M_REP1.markdup.sorted.bam.idxstats 87/RAP1_IAA_30M_REP1.markdup.sorted.bam.idxstats
+    mkdir -p 25 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/63/b815a951b5ea6122b0a1a6d8a2d534/WT_REP1_trimmed_1_val_1_fastqc.zip 25/WT_REP1_trimmed_1_val_1_fastqc.zip
+    mkdir -p 133 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/ef/beeb2d5ddfdae9ceefe5e7356e4140/WT_REP2.inner_distance_freq.txt 133/WT_REP2.inner_distance_freq.txt
+    mkdir -p 60 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/0c/f25dec3f93888178f3a0a165a3eb91/RAP1_UNINDUCED_REP1_duprateExpDensCurve_mqc.txt 60/RAP1_UNINDUCED_REP1_duprateExpDensCurve_mqc.txt
+    mkdir -p 76 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/c4/ce6d0899841d1d69c281b2a08f6231/RAP1_IAA_30M_REP1.biotype_counts_rrna_mqc.tsv 76/RAP1_IAA_30M_REP1.biotype_counts_rrna_mqc.tsv
+    mkdir -p 89 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/c9/186aa05802f265e278ba7897674fc0/RAP1_UNINDUCED_REP1.markdup.sorted.bam.idxstats 89/RAP1_UNINDUCED_REP1.markdup.sorted.bam.idxstats
+    mkdir -p 14 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/7c/7b915bce8ed5e2c9b83a2adad1b583/RAP1_IAA_30M_REP1_raw_2_fastqc.zip 14/RAP1_IAA_30M_REP1_raw_2_fastqc.zip
+    mkdir -p 40 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/4c/3fda75e63a0e7daabb621b35497e10/WT_REP2.sorted.bam.stats 40/WT_REP2.sorted.bam.stats
+    mkdir -p 33 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/68/e8b55ac0d6e49af254faa98987384a/WT_REP2.Log.final.out 33/WT_REP2.Log.final.out
+    mkdir -p 121 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/f5/5be8d92ff511735aa63347d5728218/RAP1_UNINDUCED_REP2.pos.DupRate.xls 121/RAP1_UNINDUCED_REP2.pos.DupRate.xls
+    mkdir -p 106 && ln -s /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/52/89ebf2bc458c430dcec608d98db3f4/WT_REP1.infer_experiment.txt 106/WT_REP1.infer_experiment.txt
+}
+
+nxf_unstage_outputs() {
+    true
+}
+
+nxf_unstage_controls() {
+    true
+}
+
+nxf_unstage() {
+    if [[ ${nxf_main_ret:=0} == 0 ]]; then
+        (set -e -o pipefail; (nxf_unstage_outputs | tee -a .command.out) 3>&1 1>&2 2>&3 | tee -a .command.err)
+        nxf_unstage_ret=$?
+    fi
+    nxf_unstage_controls
+}
+
+nxf_main() {
+    trap on_exit EXIT
+    trap on_term TERM INT USR2
+    trap '' USR1
+
+    [[ "${NXF_CHDIR:-}" ]] && cd "$NXF_CHDIR"
+    export NXF_BOXID="nxf-$(dd bs=18 count=1 if=/dev/urandom 2>/dev/null | base64 | tr +/ 0A | tr -d '\r\n')"
+    NXF_SCRATCH=''
+    [[ $NXF_DEBUG > 0 ]] && nxf_env
+    touch /Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/73/4cc6315cad2b365367f3f3bce93a10/.command.begin
+    set +u
+    set -u
+    [[ $NXF_SCRATCH ]] && cd $NXF_SCRATCH
+    export NXF_TASK_WORKDIR="$PWD"
+    nxf_stage
+
+    set +e
+    (set -o pipefail; (nxf_launch | tee .command.out) 3>&1 1>&2 2>&3 | tee .command.err) &
+    pid=$!
+    wait $pid || nxf_main_ret=$?
+    nxf_unstage
+}
+
+$NXF_ENTRY

@@ -1,0 +1,7 @@
+Unable to find image 'quay.io/biocontainers/samtools:1.21--h50ea8bc_0' locally
+1.21--h50ea8bc_0: Pulling from biocontainers/samtools
+4812db8a95f0: Pulling fs layer
+4812db8a95f0: Download complete
+Digest: sha256:783c6646029a306ec5e4162009dc1a20d8f6c528f7c380e5b4affbf12d9112e5
+Status: Downloaded newer image for quay.io/biocontainers/samtools:1.21--h50ea8bc_0
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested

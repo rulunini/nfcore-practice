@@ -1,0 +1,90 @@
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+Sep 24, 2025 2:05:34 AM java.util.prefs.FileSystemPreferences$1 run
+INFO: Created user preferences directory.
+java -ea -Xmx12288M -Xms12288M -cp /opt/conda/opt/bbmap-39.18-0/current/ align2.BBSplitter ow=t fastareadlen=500 minhits=1 minratio=0.56 maxindel=20 qtrim=rl untrim=t trimq=6 -Xmx12288M path=bbsplit threads=4 in=RAP1_IAA_30M_REP1_trimmed_1_val_1.fq.gz in2=RAP1_IAA_30M_REP1_trimmed_2_val_2.fq.gz basename=RAP1_IAA_30M_REP1_%_#.fastq.gz refstats=RAP1_IAA_30M_REP1.stats.txt build=1 ambiguous2=all maxindel=150000 ow=f
+Executing align2.BBSplitter [ow=t, fastareadlen=500, minhits=1, minratio=0.56, maxindel=20, qtrim=rl, untrim=t, trimq=6, -Xmx12288M, path=bbsplit, threads=4, in=RAP1_IAA_30M_REP1_trimmed_1_val_1.fq.gz, in2=RAP1_IAA_30M_REP1_trimmed_2_val_2.fq.gz, basename=RAP1_IAA_30M_REP1_%_#.fastq.gz, refstats=RAP1_IAA_30M_REP1.stats.txt, build=1, ambiguous2=all, maxindel=150000, ow=f]
+
+Merged reference file bbsplit/ref/genome/1/merged_ref_8374379829187813017.fa.gz already exists; skipping merge.
+Ref merge time:     	0.029 seconds.
+Executing align2.BBMap [ow=t, fastareadlen=500, minhits=1, minratio=0.56, maxindel=20, qtrim=rl, untrim=t, trimq=6, threads=4, in=RAP1_IAA_30M_REP1_trimmed_1_val_1.fq.gz, in2=RAP1_IAA_30M_REP1_trimmed_2_val_2.fq.gz, refstats=RAP1_IAA_30M_REP1.stats.txt, build=1, ambiguous2=all, maxindel=150000, ow=f, ref=bbsplit/ref/genome/1/merged_ref_8374379829187813017.fa.gz, out_primary=RAP1_IAA_30M_REP1_primary_#.fastq.gz, out_sarscov2=RAP1_IAA_30M_REP1_sarscov2_#.fastq.gz, out_human=RAP1_IAA_30M_REP1_human_#.fastq.gz]
+Version 39.18
+
+Set MINIMUM_ALIGNMENT_SCORE_RATIO to 0.560
+Set threads to 4
+Reference set statistics will be written to RAP1_IAA_30M_REP1.stats.txt
+Retaining first best site only for ambiguous mappings.
+NOTE:	Ignoring reference file because it already appears to have been processed.
+NOTE:	If you wish to regenerate the index, please manually delete bbsplit/ref/genome/1/summary.txt
+Set genome to 1
+
+Loaded Reference:	0.056 seconds.
+Loading index for chunk 1-1, build 1
+Generated Index:	0.297 seconds.
+Analyzed Index:   	1.812 seconds.
+Reads that map to multiple references will be written to all relevant output streams.
+Creating ref-set statistics table:    	0.176 seconds.
+Cleared Memory:    	0.169 seconds.
+Processing reads in paired-ended mode.
+Started read stream.
+Started 4 mapping threads.
+Detecting finished threads: 0, 1, 2, 3
+
+   ------------------   Results   ------------------   
+
+Genome:                	1
+Key Length:            	13
+Max Indel:             	150000
+Minimum Score Ratio:  	0.56
+Mapping Mode:         	normal
+Reads Used:           	99582	(9877752 bases)
+
+Mapping:          	7.942 seconds.
+Reads/sec:       	12538.88
+kBases/sec:      	1243.76
+
+
+Pairing data:   	pct pairs	num pairs 	pct bases	   num bases
+
+mated pairs:     	 97.1099% 	    48352 	 97.1628% 	     9597498
+bad pairs:       	  0.4398% 	      219 	  0.4434% 	       43800
+insert size avg: 	  173.02
+
+
+Read 1 data:      	pct reads	num reads 	pct bases	   num bases
+
+mapped:          	 98.4957% 	    49042 	 98.4869% 	     4867807
+unambiguous:     	 97.4614% 	    48527 	 97.4636% 	     4817229
+ambiguous:       	  1.0343% 	      515 	  1.0233% 	       50578
+low-Q discards:  	  0.0000% 	        0 	  0.0000% 	           0
+
+perfect best site:	 60.7640% 	    30255 	 60.7535% 	     3002796
+semiperfect site:	 60.7640% 	    30255 	 60.7535% 	     3002796
+rescued:         	  1.4963% 	      745
+
+Match Rate:      	      NA 	       NA 	 92.1866% 	     4783308
+Error Rate:      	 38.2692% 	    18768 	  7.8111% 	      405298
+Sub Rate:        	 36.9724% 	    18132 	  1.5925% 	       82628
+Del Rate:        	  2.3612% 	     1158 	  6.1849% 	      320917
+Ins Rate:        	  1.1663% 	      572 	  0.0338% 	        1753
+N Rate:          	  0.0591% 	       29 	  0.0023% 	         118
+
+
+Read 2 data:      	pct reads	num reads 	pct bases	   num bases
+
+mapped:          	 98.6564% 	    49122 	 98.6811% 	     4870069
+unambiguous:     	 97.5960% 	    48594 	 97.6330% 	     4818342
+ambiguous:       	  1.0604% 	      528 	  1.0481% 	       51727
+low-Q discards:  	  0.0582% 	       29 	  0.0353% 	        1740
+
+perfect best site:	 61.7160% 	    30729 	 61.7646% 	     3048181
+semiperfect site:	 61.7200% 	    30731 	 61.7687% 	     3048383
+rescued:         	  3.6312% 	     1808
+
+Match Rate:      	      NA 	       NA 	 94.7586% 	     4780904
+Error Rate:      	 37.2990% 	    18322 	  5.2197% 	      263353
+Sub Rate:        	 35.8821% 	    17626 	  1.7188% 	       86722
+Del Rate:        	  2.4612% 	     1209 	  3.4741% 	      175282
+Ins Rate:        	  0.9222% 	      453 	  0.0267% 	        1349
+N Rate:          	  0.1873% 	       92 	  0.0217% 	        1094
+
+Total time:     	10.512 seconds.

@@ -1,0 +1,11 @@
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+Running StringTie 2.2.3. Command line:
+stringtie WT_REP2.markdup.sorted.bam --rf -G genome_gfp.gtf -o WT_REP2.transcripts.gtf -A WT_REP2.gene.abundance.txt -C WT_REP2.coverage.gtf -b WT_REP2.ballgown -p 4 -v -e
+[09/24 02:12:09] Loading reference annotation (guides)..
+[09/24 02:12:09] 125 reference transcripts loaded.
+Default stack size for threads: 8388608
+[09/24 02:12:09]>bundle I:1804-229983 [82528 alignments (22892 distinct), 107 junctions, 122 guides] begins processing...
+[09/24 02:12:09]^bundle I:1804-229983 done (91 processed potential transcripts).
+[09/24 02:12:09] All threads finished.
+Total count of aligned fragments: 46169.9
+Fragment coverage length: 174.232

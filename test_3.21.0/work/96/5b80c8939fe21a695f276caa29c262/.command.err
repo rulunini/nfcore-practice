@@ -1,0 +1,90 @@
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+Sep 24, 2025 2:05:09 AM java.util.prefs.FileSystemPreferences$1 run
+INFO: Created user preferences directory.
+java -ea -Xmx12288M -Xms12288M -cp /opt/conda/opt/bbmap-39.18-0/current/ align2.BBSplitter ow=t fastareadlen=500 minhits=1 minratio=0.56 maxindel=20 qtrim=rl untrim=t trimq=6 -Xmx12288M path=bbsplit threads=4 in=WT_REP1_trimmed_1_val_1.fq.gz in2=WT_REP1_trimmed_2_val_2.fq.gz basename=WT_REP1_%_#.fastq.gz refstats=WT_REP1.stats.txt build=1 ambiguous2=all maxindel=150000 ow=f
+Executing align2.BBSplitter [ow=t, fastareadlen=500, minhits=1, minratio=0.56, maxindel=20, qtrim=rl, untrim=t, trimq=6, -Xmx12288M, path=bbsplit, threads=4, in=WT_REP1_trimmed_1_val_1.fq.gz, in2=WT_REP1_trimmed_2_val_2.fq.gz, basename=WT_REP1_%_#.fastq.gz, refstats=WT_REP1.stats.txt, build=1, ambiguous2=all, maxindel=150000, ow=f]
+
+Merged reference file bbsplit/ref/genome/1/merged_ref_8374379829187813017.fa.gz already exists; skipping merge.
+Ref merge time:     	0.031 seconds.
+Executing align2.BBMap [ow=t, fastareadlen=500, minhits=1, minratio=0.56, maxindel=20, qtrim=rl, untrim=t, trimq=6, threads=4, in=WT_REP1_trimmed_1_val_1.fq.gz, in2=WT_REP1_trimmed_2_val_2.fq.gz, refstats=WT_REP1.stats.txt, build=1, ambiguous2=all, maxindel=150000, ow=f, ref=bbsplit/ref/genome/1/merged_ref_8374379829187813017.fa.gz, out_primary=WT_REP1_primary_#.fastq.gz, out_sarscov2=WT_REP1_sarscov2_#.fastq.gz, out_human=WT_REP1_human_#.fastq.gz]
+Version 39.18
+
+Set MINIMUM_ALIGNMENT_SCORE_RATIO to 0.560
+Set threads to 4
+Reference set statistics will be written to WT_REP1.stats.txt
+Retaining first best site only for ambiguous mappings.
+NOTE:	Ignoring reference file because it already appears to have been processed.
+NOTE:	If you wish to regenerate the index, please manually delete bbsplit/ref/genome/1/summary.txt
+Set genome to 1
+
+Loaded Reference:	0.033 seconds.
+Loading index for chunk 1-1, build 1
+Generated Index:	0.289 seconds.
+Analyzed Index:   	1.755 seconds.
+Reads that map to multiple references will be written to all relevant output streams.
+Creating ref-set statistics table:    	0.179 seconds.
+Cleared Memory:    	0.207 seconds.
+Processing reads in paired-ended mode.
+Started read stream.
+Started 4 mapping threads.
+Detecting finished threads: 0, 1, 2, 3
+
+   ------------------   Results   ------------------   
+
+Genome:                	1
+Key Length:            	13
+Max Indel:             	150000
+Minimum Score Ratio:  	0.56
+Mapping Mode:         	normal
+Reads Used:           	199132	(19731741 bases)
+
+Mapping:          	14.474 seconds.
+Reads/sec:       	13757.83
+kBases/sec:      	1363.25
+
+
+Pairing data:   	pct pairs	num pairs 	pct bases	   num bases
+
+mated pairs:     	 96.0147% 	    95598 	 96.0543% 	    18953192
+bad pairs:       	  0.5213% 	      519 	  0.5275% 	      104076
+insert size avg: 	  171.98
+
+
+Read 1 data:      	pct reads	num reads 	pct bases	   num bases
+
+mapped:          	 98.1158% 	    97690 	 98.1011% 	     9685988
+unambiguous:     	 96.9437% 	    96523 	 96.9342% 	     9570777
+ambiguous:       	  1.1721% 	     1167 	  1.1669% 	      115211
+low-Q discards:  	  0.0000% 	        0 	  0.0000% 	           0
+
+perfect best site:	 59.1407% 	    58884 	 59.1117% 	     5836377
+semiperfect site:	 59.1407% 	    58884 	 59.1117% 	     5836377
+rescued:         	  1.4774% 	     1471
+
+Match Rate:      	      NA 	       NA 	 92.6423% 	     9508262
+Error Rate:      	 39.6919% 	    38775 	  7.3549% 	      754867
+Sub Rate:        	 38.4748% 	    37586 	  1.6939% 	      173849
+Del Rate:        	  2.3001% 	     2247 	  5.6260% 	      577423
+Ins Rate:        	  1.1567% 	     1130 	  0.0350% 	        3595
+N Rate:          	  0.0614% 	       60 	  0.0027% 	         282
+
+
+Read 2 data:      	pct reads	num reads 	pct bases	   num bases
+
+mapped:          	 98.0777% 	    97652 	 98.1031% 	     9671266
+unambiguous:     	 96.8674% 	    96447 	 96.8994% 	     9552604
+ambiguous:       	  1.2103% 	     1205 	  1.2037% 	      118662
+low-Q discards:  	  0.0693% 	       69 	  0.0420% 	        4140
+
+perfect best site:	 59.4651% 	    59207 	 59.4921% 	     5864888
+semiperfect site:	 59.4651% 	    59207 	 59.4921% 	     5864888
+rescued:         	  3.6950% 	     3679
+
+Match Rate:      	      NA 	       NA 	 95.6742% 	     9484541
+Error Rate:      	 39.2107% 	    38290 	  4.3010% 	      426377
+Sub Rate:        	 37.7616% 	    36875 	  1.8280% 	      181216
+Del Rate:        	  2.3379% 	     2283 	  2.4422% 	      242103
+Ins Rate:        	  0.9851% 	      962 	  0.0308% 	        3058
+N Rate:          	  0.2325% 	      227 	  0.0247% 	        2451
+
+Total time:     	16.993 seconds.

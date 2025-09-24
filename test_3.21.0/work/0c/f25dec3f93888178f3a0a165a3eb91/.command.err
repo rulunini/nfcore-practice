@@ -1,0 +1,14 @@
+Unable to find image 'quay.io/biocontainers/bioconductor-dupradar:1.32.0--r43hdfd78af_0' locally
+1.32.0--r43hdfd78af_0: Pulling from biocontainers/bioconductor-dupradar
+dc5a13188378: Pulling fs layer
+dc5a13188378: Download complete
+Digest: sha256:74448027f03ccd5a6b04ed5a073499a660ec3076401e2d03bbaf7e86f5b34dd3
+Status: Downloaded newer image for quay.io/biocontainers/bioconductor-dupradar:1.32.0--r43hdfd78af_0
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+Input bam      : RAP1_UNINDUCED_REP1.markdup.sorted.bam
+Input gtf      : genome_gfp.gtf
+Strandness     : reverse
+paired/single  : single
+feature type   : single
+Nb threads     : 1
+Output basename: RAP1_UNINDUCED_REP1

@@ -1,0 +1,52 @@
+To cite package ‘SummarizedExperiment’ in publications use:
+
+  Morgan M, Obenchain V, Hester J, Pagès H (2023).
+  _SummarizedExperiment: SummarizedExperiment container_.
+  doi:10.18129/B9.bioc.SummarizedExperiment
+  <https://doi.org/10.18129/B9.bioc.SummarizedExperiment>, R package
+  version 1.32.0,
+  <https://bioconductor.org/packages/SummarizedExperiment>.
+
+A BibTeX entry for LaTeX users is
+
+  @Manual{,
+    title = {SummarizedExperiment: SummarizedExperiment container},
+    author = {Martin Morgan and Valerie Obenchain and Jim Hester and Hervé Pagès},
+    year = {2023},
+    note = {R package version 1.32.0},
+    url = {https://bioconductor.org/packages/SummarizedExperiment},
+    doi = {10.18129/B9.bioc.SummarizedExperiment},
+  }
+R version 4.3.2 (2023-10-31)
+Platform: x86_64-conda-linux-gnu (64-bit)
+Running under: Debian GNU/Linux 12 (bookworm)
+
+Matrix products: default
+BLAS/LAPACK: /usr/local/lib/libopenblasp-r0.3.25.so;  LAPACK version 3.11.0
+
+locale:
+ [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8       
+ [4] LC_COLLATE=C.UTF-8     LC_MONETARY=C.UTF-8    LC_MESSAGES=C.UTF-8   
+ [7] LC_PAPER=C.UTF-8       LC_NAME=C              LC_ADDRESS=C          
+[10] LC_TELEPHONE=C         LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   
+
+time zone: NA
+tzcode source: system (glibc)
+
+attached base packages:
+[1] stats4    stats     graphics  grDevices utils     datasets  methods  
+[8] base     
+
+other attached packages:
+[1] SummarizedExperiment_1.32.0 Biobase_2.62.0             
+[3] GenomicRanges_1.54.1        GenomeInfoDb_1.38.1        
+[5] IRanges_2.36.0              S4Vectors_0.40.2           
+[7] BiocGenerics_0.48.1         MatrixGenerics_1.14.0      
+[9] matrixStats_1.1.0          
+
+loaded via a namespace (and not attached):
+ [1] SparseArray_1.2.2       zlibbioc_1.48.0         Matrix_1.6-4           
+ [4] lattice_0.22-5          abind_1.4-5             GenomeInfoDbData_1.2.11
+ [7] S4Arrays_1.2.0          XVector_0.42.0          RCurl_1.98-1.13        
+[10] bitops_1.0-7            grid_4.3.2              DelayedArray_0.28.0    
+[13] compiler_4.3.2          tools_4.3.2             crayon_1.5.2           

@@ -1,0 +1,1 @@
+/Users/sohee/Gitrulu/nfcore-practice/test_3.21.0/work/6b/18beae56f00969ab87c4a1a3a3504a/RAP1_IAA_30M_REP1_trimmed_1.fastq.gz_trimming_report.txt

@@ -1,0 +1,14 @@
+#Summary
+#Generated on	Wed Sep 24 02:05:07 GMT 2025
+#Version	5
+chroms	1
+bases	457751
+defined	440851
+undefined	16900
+contigs	4
+scaffolds	4
+interpad	300
+source	bbsplit/ref/genome/1/merged_ref_8374379829187813017.fa.gz
+bytes	122805
+last modified	1758679506800
+scafprefixes	true

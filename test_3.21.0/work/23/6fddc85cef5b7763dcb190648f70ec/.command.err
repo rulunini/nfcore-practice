@@ -1,0 +1,8 @@
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+Input bam      : WT_REP1.markdup.sorted.bam
+Input gtf      : genome_gfp.gtf
+Strandness     : reverse
+paired/single  : paired
+feature type   : paired
+Nb threads     : 1
+Output basename: WT_REP1

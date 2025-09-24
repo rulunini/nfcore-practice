@@ -1,0 +1,11 @@
+Unable to find image 'quay.io/biocontainers/rseqc:5.0.3--py39hf95cd2a_0' locally
+5.0.3--py39hf95cd2a_0: Pulling from biocontainers/rseqc
+4778d18b334d: Pulling fs layer
+4778d18b334d: Download complete
+Digest: sha256:9fc7027efc23a9dd2309ead1d285034da324eae64e6e940cb0760f4525fa28aa
+Status: Downloaded newer image for quay.io/biocontainers/rseqc:5.0.3--py39hf95cd2a_0
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+processing genome_gfp.bed ... Done
+[E::idx_find_and_load] Could not retrieve index file for 'RAP1_UNINDUCED_REP1.markdup.sorted.bam'
+processing RAP1_UNINDUCED_REP1.markdup.sorted.bam ... Finished
+

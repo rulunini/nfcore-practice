@@ -1,0 +1,108 @@
+Unable to find image 'quay.io/biocontainers/salmon:1.10.3--h6dccd9a_2' locally
+1.10.3--h6dccd9a_2: Pulling from biocontainers/salmon
+9ddd7f00c876: Pulling fs layer
+9ddd7f00c876: Download complete
+Digest: sha256:f83ebb158845ee8138d793347f83b92c75e83c58dd8f4600c6fea2a2453ef08e
+Status: Downloaded newer image for quay.io/biocontainers/salmon:1.10.3--h6dccd9a_2
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+Version Server Response: Not Found
+### salmon (selective-alignment-based) v1.10.3
+### [ program ] => salmon 
+### [ command ] => quant 
+### [ geneMap ] => { genome_gfp.gtf }
+### [ threads ] => { 4 }
+### [ libType ] => { ISR }
+### [ index ] => { salmon }
+### [ mates1 ] => { WT_REP2_primary_1.fastq.gz }
+### [ mates2 ] => { WT_REP2_primary_2.fastq.gz }
+### [ output ] => { WT_REP2 }
+Logs will be written to WT_REP2/logs
+-----------------------------------------
+| Loading contig table | Time = 1.1807 ms
+-----------------------------------------
+size = 840
+-----------------------------------------
+| Loading contig offsets | Time = 537.12 us
+-----------------------------------------
+-----------------------------------------
+| Loading reference lengths | Time = 83.209 us
+-----------------------------------------
+-----------------------------------------
+| Loading mphf table | Time = 1.548 ms
+-----------------------------------------
+size = 247935
+Number of ones: 839
+Number of ones per inventory item: 512
+Inventory entries filled: 2
+-----------------------------------------
+| Loading contig boundaries | Time = 2.4885 ms
+-----------------------------------------
+size = 247935
+[2025-09-24 02:06:21.770] [jointLog] [info] setting maxHashResizeThreads to 4
+-----------------------------------------
+| Loading sequence | Time = 978 us
+-----------------------------------------
+[2025-09-24 02:06:21.771] [jointLog] [info] Fragment incompatibility prior below threshold.  Incompatible fragments will be ignored.
+[2025-09-24 02:06:21.771] [jointLog] [info] Usage of --validateMappings implies use of minScoreFraction. Since not explicitly specified, it is being set to 0.65
+[2025-09-24 02:06:21.771] [jointLog] [info] Setting consensusSlack to selective-alignment default of 0.35.
+[2025-09-24 02:06:21.771] [jointLog] [info] parsing read library format
+[2025-09-24 02:06:21.773] [jointLog] [info] There is 1 library.
+[2025-09-24 02:06:21.780] [jointLog] [info] Loading pufferfish index
+[2025-09-24 02:06:21.781] [jointLog] [info] Loading dense pufferfish index.
+size = 222765
+-----------------------------------------
+| Loading positions | Time = 1.3065 ms
+-----------------------------------------
+size = 381211
+-----------------------------------------
+| Loading reference sequence | Time = 435.88 us
+-----------------------------------------
+-----------------------------------------
+| Loading reference accumulative lengths | Time = 30.75 us
+-----------------------------------------
+[2025-09-24 02:06:21.794] [jointLog] [info] done
+
+
+
+
+[2025-09-24 02:06:21.815] [jointLog] [info] Index contained 126 targets
+[2025-09-24 02:06:21.815] [jointLog] [info] Number of decoys : 1
+[2025-09-24 02:06:21.815] [jointLog] [info] First decoy index : 125 
+[2025-09-24 02:06:21.976] [jointLog] [info] Thread saw mini-batch with a maximum of 0.94% zero probability fragments
+[2025-09-24 02:06:21.978] [jointLog] [info] Thread saw mini-batch with a maximum of 0.86% zero probability fragments
+[2025-09-24 02:06:22.010] [jointLog] [info] Thread saw mini-batch with a maximum of 0.80% zero probability fragments
+[2025-09-24 02:06:22.013] [jointLog] [info] Thread saw mini-batch with a maximum of 0.82% zero probability fragments
+
+
+
+
+
+
+
+
+[2025-09-24 02:06:22.022] [jointLog] [info] Computed 89 rich equivalence classes for further processing
+[2025-09-24 02:06:22.022] [jointLog] [info] Counted 39548 total reads in the equivalence classes 
+[2025-09-24 02:06:22.023] [jointLog] [info] Number of mappings discarded because of alignment score : 3604
+[2025-09-24 02:06:22.023] [jointLog] [info] Number of fragments entirely discarded because of alignment score : 4325
+[2025-09-24 02:06:22.023] [jointLog] [info] Number of fragments discarded because they are best-mapped to decoys : 3166
+[2025-09-24 02:06:22.023] [jointLog] [info] Number of fragments discarded because they have only dovetail (discordant) mappings to valid targets : 55
+[2025-09-24 02:06:22.024] [jointLog] [warning] Only 39548 fragments were mapped, but the number of burn-in fragments was set to 5000000.
+The effective lengths have been computed using the observed mappings.
+
+[2025-09-24 02:06:22.024] [jointLog] [info] Mapping rate = 79.8127%
+
+[2025-09-24 02:06:22.024] [jointLog] [info] finished quantifyLibrary()
+[2025-09-24 02:06:22.025] [jointLog] [info] Starting optimizer
+[2025-09-24 02:06:22.035] [jointLog] [info] Marked 0 weighted equivalence classes as degenerate
+[2025-09-24 02:06:22.037] [jointLog] [info] iteration = 0 | max rel diff. = 315.135
+[2025-09-24 02:06:22.042] [jointLog] [info] iteration = 100 | max rel diff. = 0
+[2025-09-24 02:06:22.043] [jointLog] [info] Finished optimizer
+[2025-09-24 02:06:22.043] [jointLog] [info] writing output 
+
+[2025-09-24 02:06:22.044] [jointLog] [info] Computing gene-level abundance estimates
+[2025-09-24 02:06:22.052] [jointLog] [warning] Feature has no GFF ID
+[2025-09-24 02:06:22.052] [jointLog] [info] There were 124 transcripts mapping to 124 genes
+[2025-09-24 02:06:22.053] [jointLog] [info] NOTE: We recommend using tximport (https://bioconductor.org/packages/release/bioc/html/tximport.html) for aggregating transcript-level salmon abundance estimates to the gene level.  It is more versatile, exposes more features, and allows considering multi-sample information during aggregation.
+[2025-09-24 02:06:22.054] [jointLog] [warning] couldn't find transcript named [Gfp_transgene_gene] in transcript <-> gene map; returning transcript as it's own gene
+[2025-09-24 02:06:22.054] [jointLog] [info] Aggregating expressions to gene level
+[2025-09-24 02:06:22.055] [jointLog] [info] done

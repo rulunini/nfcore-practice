@@ -1,0 +1,32 @@
+Unable to find image 'community.wave.seqera.io/library/coreutils_grep_gzip_lbzip2_pruned:838ba80435a629f8' locally
+838ba80435a629f8: Pulling from library/coreutils_grep_gzip_lbzip2_pruned
+2fc3b27fe229: Pulling fs layer
+f88da01cff0b: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+17dc7ea432cc: Pulling fs layer
+dafa2b0c44d2: Pulling fs layer
+92dc97a3ef36: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+bb36d6c3110d: Pulling fs layer
+dec6b097362e: Pulling fs layer
+9f0d519e5362: Pulling fs layer
+0ea1a16bbe82: Pulling fs layer
+030a47592a0a: Pulling fs layer
+403f74b0f85e: Pulling fs layer
+10b8c00c10a5: Pulling fs layer
+92dc97a3ef36: Download complete
+f88da01cff0b: Download complete
+4f4fb700ef54: Download complete
+0ea1a16bbe82: Download complete
+dec6b097362e: Download complete
+dafa2b0c44d2: Download complete
+17dc7ea432cc: Download complete
+bb36d6c3110d: Download complete
+9f0d519e5362: Download complete
+030a47592a0a: Download complete
+403f74b0f85e: Download complete
+10b8c00c10a5: Download complete
+2fc3b27fe229: Download complete
+Digest: sha256:63c2c6b22e83b2f656e88fbb1553e595da4e9e58794e3bfcb98b20b3837f328a
+Status: Downloaded newer image for community.wave.seqera.io/library/coreutils_grep_gzip_lbzip2_pruned:838ba80435a629f8
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested

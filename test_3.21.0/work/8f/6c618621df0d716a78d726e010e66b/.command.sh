@@ -1,0 +1,18 @@
+#!/usr/bin/env bash -C -e -u -o pipefail
+unset DISPLAY
+mkdir -p tmp
+export _JAVA_OPTIONS=-Djava.io.tmpdir=./tmp
+qualimap \
+    --java-mem-size=12288M \
+    rnaseq \
+     \
+    -bam RAP1_UNINDUCED_REP1.markdup.sorted.bam \
+    -gtf genome_gfp.gtf \
+    -p strand-specific-reverse \
+     \
+    -outdir RAP1_UNINDUCED_REP1
+
+cat <<-END_VERSIONS > versions.yml
+"NFCORE_RNASEQ:RNASEQ:QUALIMAP_RNASEQ":
+    qualimap: $(echo $(qualimap 2>&1) | sed 's/^.*QualiMap v.//; s/Built.*$//')
+END_VERSIONS

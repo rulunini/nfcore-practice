@@ -1,0 +1,10 @@
+Unable to find image 'quay.io/biocontainers/qualimap:2.3--hdfd78af_0' locally
+2.3--hdfd78af_0: Pulling from biocontainers/qualimap
+53aaa050dfb0: Pulling fs layer
+53aaa050dfb0: Download complete
+Digest: sha256:49d81e27bf995d0ef72ae46c79c22c8c779e21573cd76f7b60cf3f73af61b087
+Status: Downloaded newer image for quay.io/biocontainers/qualimap:2.3--hdfd78af_0
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+Picked up _JAVA_OPTIONS: -Djava.io.tmpdir=./tmp
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories

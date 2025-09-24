@@ -1,0 +1,2 @@
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+__main__ - 2025-09-24 02:11:29,136 INFO: Attribute 'transcript_id' corresponds to transcripts.

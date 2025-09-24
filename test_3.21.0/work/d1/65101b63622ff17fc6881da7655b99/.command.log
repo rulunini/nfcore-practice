@@ -1,0 +1,24 @@
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+null device 
+          1 
+null device 
+          1 
+total = 1201
+Reading reference bed file:  genome_gfp.bed  ...  Done
+Load BAM file ...  Done
+
+===================================================================
+Total splicing  Events:	1201
+Known Splicing Events:	548
+Partial Novel Splicing Events:	0
+Novel Splicing Events:	536
+Filtered Splicing Events:	117
+
+Total splicing  Junctions:	122
+Known Splicing Junctions:	3
+Partial Novel Splicing Junctions:	0
+Novel Splicing Junctions:	119
+
+===================================================================
+Create BED file ...
+Create Interact file ...

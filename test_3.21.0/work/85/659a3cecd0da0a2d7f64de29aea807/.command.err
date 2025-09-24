@@ -1,0 +1,68 @@
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+Version Server Response: Not Found
+# salmon (alignment-based) v1.10.3
+# [ program ] => salmon 
+# [ command ] => quant 
+# [ geneMap ] => { genome_gfp.gtf }
+# [ threads ] => { 4 }
+# [ libType ] => { ISR }
+# [ targets ] => { transcriptome.fasta }
+# [ alignments ] => { WT_REP1.Aligned.toTranscriptome.out.bam }
+# [ output ] => { WT_REP1 }
+Logs will be written to WT_REP1/logs
+Library format { type:paired end, relative orientation:inward, strandedness:(antisense, sense) }
+parseThreads = 2
+[2025-09-24 02:10:04.051] [jointLog] [info] setting maxHashResizeThreads to 4
+[2025-09-24 02:10:04.052] [jointLog] [info] Fragment incompatibility prior below threshold.  Incompatible fragments will be ignored.
+[2025-09-24 02:10:04.054] [jointLog] [info] numQuantThreads = 2
+Checking that provided alignment files have consistent headers . . . done
+Populating targets from aln = "WT_REP1.Aligned.toTranscriptome.out.bam", fasta = "transcriptome.fasta" . . .done
+[2025-09-24 02:10:04.253] [jointLog] [info] replaced 0 non-ACGT nucleotides with random nucleotides
+
+
+
+
+[0;32mprocessed[0;31m 0 [0;32mreads in current round[0;0m[0;32mprocessed[0;31m 74145 [0;32mreads in current round[0;0m
+killing thread 0 . . . donekilling thread 1 . . . done
+
+# observed = 74145 / # required = 50000000[A[A[A[A[A
+
+
+
+
+Freeing memory used by read queue . . . 
+Joined parsing thread . . . "WT_REP1.Aligned.toTranscriptome.out.bam" 
+Closed all files . . . 
+Emptied frag queue. . . 
+Emptied Alignment Group Pool. . 
+Emptied Alignment Group Queue. . . done
+[2025-09-24 02:10:04.987] [jointLog] [info] Thread saw mini-batch with a maximum of 1.70% zero probability fragments
+[2025-09-24 02:10:04.993] [jointLog] [info] Thread saw mini-batch with a maximum of 1.90% zero probability fragments
+[2025-09-24 02:10:04.993] [jointLog] [info] 
+
+
+Completed first pass through the alignment file.
+Total # of mapped reads : 74145
+# of uniquely mapped reads : 66120
+# ambiguously mapped reads : 8025
+
+
+
+[2025-09-24 02:10:04.997] [jointLog] [info] Computed 116 rich equivalence classes for further processing
+[2025-09-24 02:10:04.997] [jointLog] [info] Counted 73305 total reads in the equivalence classes 
+[2025-09-24 02:10:04.998] [jointLog] [warning] Only 74145 fragments were mapped, but the number of burn-in fragments was set to 5000000.
+The effective lengths have been computed using the observed mappings.
+
+[2025-09-24 02:10:04.998] [jointLog] [info] starting optimizer
+[2025-09-24 02:10:05.007] [jointLog] [info] Marked 0 weighted equivalence classes as degenerate
+[2025-09-24 02:10:05.009] [jointLog] [info] iteration = 0 | max rel diff. = 618.804
+[2025-09-24 02:10:05.014] [jointLog] [info] iteration = 100 | max rel diff. = 0
+[2025-09-24 02:10:05.014] [jointLog] [info] finished optimizer
+[2025-09-24 02:10:05.014] [jointLog] [info] writing output
+[2025-09-24 02:10:05.317] [jointLog] [info] Computing gene-level abundance estimates
+[2025-09-24 02:10:05.335] [jointLog] [warning] Feature has no GFF ID
+[2025-09-24 02:10:05.336] [jointLog] [info] There were 124 transcripts mapping to 124 genes
+[2025-09-24 02:10:05.336] [jointLog] [info] NOTE: We recommend using tximport (https://bioconductor.org/packages/release/bioc/html/tximport.html) for aggregating transcript-level salmon abundance estimates to the gene level.  It is more versatile, exposes more features, and allows considering multi-sample information during aggregation.
+[2025-09-24 02:10:05.338] [jointLog] [warning] couldn't find transcript named [Gfp_transgene_gene] in transcript <-> gene map; returning transcript as it's own gene
+[2025-09-24 02:10:05.338] [jointLog] [info] Aggregating expressions to gene level
+[2025-09-24 02:10:05.339] [jointLog] [info] done
