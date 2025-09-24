@@ -1,0 +1,17 @@
+Unable to find image 'quay.io/biocontainers/multiqc:1.13--pyhdfd78af_0' locally
+1.13--pyhdfd78af_0: Pulling from biocontainers/multiqc
+00c3f0867075: Pulling fs layer
+4ca545ee6d5d: Pulling fs layer
+aa44502a478a: Pulling fs layer
+b6572cc046f2: Pulling fs layer
+bef3901422b5: Pulling fs layer
+6dbbfe98ccd4: Pulling fs layer
+4ca545ee6d5d: Already exists
+b6572cc046f2: Download complete
+6dbbfe98ccd4: Download complete
+bef3901422b5: Download complete
+aa44502a478a: Download complete
+00c3f0867075: Download complete
+Digest: sha256:db913f47894a386040d76ae5f46b19149a71377f5107327d15ec89d3a1ec3f5f
+Status: Downloaded newer image for quay.io/biocontainers/multiqc:1.13--pyhdfd78af_0
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested

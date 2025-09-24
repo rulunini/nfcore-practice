@@ -1,0 +1,10 @@
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+Input bam      (Arg 1): RAP1_IAA_30M_REP1.markdup.sorted.bam
+Input gtf      (Arg 2): genome_gfp.gtf
+Strandness     (Arg 3): reverse
+paired/single  (Arg 4): paired
+Nb threads     (Arg 5): 1
+R package loc. (Arg 6): paired
+Output basename       : RAP1_IAA_30M_REP1
+Loading required package: dupRadar
+Loading required package: parallel

@@ -1,0 +1,17 @@
+nextflow.trace/v2
+realtime=20000
+%cpu=2072
+cpu_model=VirtualApple @ 2.50GHz
+rchar=37092487
+wchar=30137453
+syscr=8378
+syscw=1266
+read_bytes=0
+write_bytes=5760816
+%mem=151
+vmem=11986092
+rss=1201352
+peak_vmem=12116156
+peak_rss=1201352
+vol_ctxt=723
+inv_ctxt=127

@@ -1,0 +1,18 @@
+#id: 'salmon_deseq2_clustering'
+#section_name: 'SALMON DESeq2 sample similarity'
+#description: "is generated from clustering by Euclidean distances between
+#	       <a href='https://bioconductor.org/packages/release/bioc/html/DESeq2.html' target='_blank'>DESeq2</a>
+#              rlog values for each sample
+#              in the <a href='https://github.com/nf-core/rnaseq/blob/master/bin/deseq2_qc.r'><code>deseq2_qc.r</code></a> script."
+#plot_type: 'heatmap'
+#anchor: 'salmon_deseq2_clustering'
+#pconfig:
+#    title: 'DESeq2: Heatmap of the sample-to-sample distances'
+#    xlab: True
+#    reverseColors: True
+sample	RAP1_IAA_30M_REP1	RAP1_UNINDUCED_REP1	RAP1_UNINDUCED_REP2	WT_REP1	WT_REP2
+RAP1_IAA_30M_REP1	0	2.54899019754757	2.24233621923088	2.89324309474763	2.97631699682891
+RAP1_UNINDUCED_REP1	2.54899019754757	0	2.20082913053841	3.01774158394674	2.94386185360263
+RAP1_UNINDUCED_REP2	2.24233621923088	2.20082913053841	0	3.24898386319666	3.22721217500217
+WT_REP1	2.89324309474763	3.01774158394674	3.24898386319666	0	2.14254805848437
+WT_REP2	2.97631699682891	2.94386185360263	3.22721217500217	2.14254805848437	0

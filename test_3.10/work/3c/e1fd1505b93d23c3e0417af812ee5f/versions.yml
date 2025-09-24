@@ -1,0 +1,3 @@
+"NFCORE_RNASEQ:RNASEQ:DUPRADAR":
+    r-base: 4.2.1
+    bioconductor-dupradar: 1.28.0

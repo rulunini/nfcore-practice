@@ -1,0 +1,92 @@
+data: "<style>\n#nf-core-versions tbody:nth-child(even) {\n    background-color: #f2f2f2;\n\
+  }\n</style>\n<table class=\"table\" style=\"width:100%\" id=\"nf-core-versions\"\
+  >\n    <thead>\n        <tr>\n            <th> Process Name </th>\n            <th>\
+  \ Software </th>\n            <th> Version  </th>\n        </tr>\n    </thead>\n\
+  \n<tbody>\n<tr>\n    <td><samp>BBMAP_BBSPLIT</samp></td>\n    <td><samp>bbmap</samp></td>\n\
+  \    <td><samp>39.01</samp></td>\n</tr>\n\n</tbody>\n<tbody>\n<tr>\n    <td><samp>BEDTOOLS_GENOMECOV</samp></td>\n\
+  \    <td><samp>bedtools</samp></td>\n    <td><samp>2.30.0</samp></td>\n</tr>\n\n\
+  </tbody>\n<tbody>\n<tr>\n    <td><samp>CAT_ADDITIONAL_FASTA</samp></td>\n    <td><samp>python</samp></td>\n\
+  \    <td><samp>3.9.5</samp></td>\n</tr>\n\n</tbody>\n<tbody>\n<tr>\n    <td><samp>CAT_FASTQ</samp></td>\n\
+  \    <td><samp>cat</samp></td>\n    <td><samp>8.30</samp></td>\n</tr>\n\n</tbody>\n\
+  <tbody>\n<tr>\n    <td><samp>CUSTOM_DUMPSOFTWAREVERSIONS</samp></td>\n    <td><samp>python</samp></td>\n\
+  \    <td><samp>3.10.6</samp></td>\n</tr>\n\n<tr>\n    <td><samp></samp></td>\n \
+  \   <td><samp>yaml</samp></td>\n    <td><samp>6.0</samp></td>\n</tr>\n\n</tbody>\n\
+  <tbody>\n<tr>\n    <td><samp>CUSTOM_GETCHROMSIZES</samp></td>\n    <td><samp>getchromsizes</samp></td>\n\
+  \    <td><samp>1.16.1</samp></td>\n</tr>\n\n</tbody>\n<tbody>\n<tr>\n    <td><samp>DESEQ2_QC_SALMON</samp></td>\n\
+  \    <td><samp>bioconductor-deseq2</samp></td>\n    <td><samp>1.28.0</samp></td>\n\
+  </tr>\n\n<tr>\n    <td><samp></samp></td>\n    <td><samp>r-base</samp></td>\n  \
+  \  <td><samp>4.0.3</samp></td>\n</tr>\n\n</tbody>\n<tbody>\n<tr>\n    <td><samp>DESEQ2_QC_STAR_SALMON</samp></td>\n\
+  \    <td><samp>bioconductor-deseq2</samp></td>\n    <td><samp>1.28.0</samp></td>\n\
+  </tr>\n\n<tr>\n    <td><samp></samp></td>\n    <td><samp>r-base</samp></td>\n  \
+  \  <td><samp>4.0.3</samp></td>\n</tr>\n\n</tbody>\n<tbody>\n<tr>\n    <td><samp>DUPRADAR</samp></td>\n\
+  \    <td><samp>bioconductor-dupradar</samp></td>\n    <td><samp>1.28.0</samp></td>\n\
+  </tr>\n\n<tr>\n    <td><samp></samp></td>\n    <td><samp>r-base</samp></td>\n  \
+  \  <td><samp>4.2.1</samp></td>\n</tr>\n\n</tbody>\n<tbody>\n<tr>\n    <td><samp>FASTQC</samp></td>\n\
+  \    <td><samp>fastqc</samp></td>\n    <td><samp>0.11.9</samp></td>\n</tr>\n\n</tbody>\n\
+  <tbody>\n<tr>\n    <td><samp>FQ_SUBSAMPLE</samp></td>\n    <td><samp>fq</samp></td>\n\
+  \    <td><samp>0.9.1 (2022-02-22)</samp></td>\n</tr>\n\n</tbody>\n<tbody>\n<tr>\n\
+  \    <td><samp>GTF2BED</samp></td>\n    <td><samp>perl</samp></td>\n    <td><samp>5.26.2</samp></td>\n\
+  </tr>\n\n</tbody>\n<tbody>\n<tr>\n    <td><samp>GUNZIP_ADDITIONAL_FASTA</samp></td>\n\
+  \    <td><samp>gunzip</samp></td>\n    <td><samp>1.10</samp></td>\n</tr>\n\n</tbody>\n\
+  <tbody>\n<tr>\n    <td><samp>GUNZIP_GTF</samp></td>\n    <td><samp>gunzip</samp></td>\n\
+  \    <td><samp>1.10</samp></td>\n</tr>\n\n</tbody>\n<tbody>\n<tr>\n    <td><samp>MULTIQC_CUSTOM_BIOTYPE</samp></td>\n\
+  \    <td><samp>python</samp></td>\n    <td><samp>3.9.5</samp></td>\n</tr>\n\n</tbody>\n\
+  <tbody>\n<tr>\n    <td><samp>PICARD_MARKDUPLICATES</samp></td>\n    <td><samp>picard</samp></td>\n\
+  \    <td><samp>2.27.4-SNAPSHOT</samp></td>\n</tr>\n\n</tbody>\n<tbody>\n<tr>\n \
+  \   <td><samp>QUALIMAP_RNASEQ</samp></td>\n    <td><samp>qualimap</samp></td>\n\
+  \    <td><samp>2.2.2-dev</samp></td>\n</tr>\n\n</tbody>\n<tbody>\n<tr>\n    <td><samp>RSEQC_BAMSTAT</samp></td>\n\
+  \    <td><samp>rseqc</samp></td>\n    <td><samp>3.0.1</samp></td>\n</tr>\n\n</tbody>\n\
+  <tbody>\n<tr>\n    <td><samp>RSEQC_INFEREXPERIMENT</samp></td>\n    <td><samp>rseqc</samp></td>\n\
+  \    <td><samp>3.0.1</samp></td>\n</tr>\n\n</tbody>\n<tbody>\n<tr>\n    <td><samp>RSEQC_INNERDISTANCE</samp></td>\n\
+  \    <td><samp>rseqc</samp></td>\n    <td><samp>3.0.1</samp></td>\n</tr>\n\n</tbody>\n\
+  <tbody>\n<tr>\n    <td><samp>RSEQC_JUNCTIONANNOTATION</samp></td>\n    <td><samp>rseqc</samp></td>\n\
+  \    <td><samp>3.0.1</samp></td>\n</tr>\n\n</tbody>\n<tbody>\n<tr>\n    <td><samp>RSEQC_JUNCTIONSATURATION</samp></td>\n\
+  \    <td><samp>rseqc</samp></td>\n    <td><samp>3.0.1</samp></td>\n</tr>\n\n</tbody>\n\
+  <tbody>\n<tr>\n    <td><samp>RSEQC_READDISTRIBUTION</samp></td>\n    <td><samp>rseqc</samp></td>\n\
+  \    <td><samp>3.0.1</samp></td>\n</tr>\n\n</tbody>\n<tbody>\n<tr>\n    <td><samp>RSEQC_READDUPLICATION</samp></td>\n\
+  \    <td><samp>rseqc</samp></td>\n    <td><samp>3.0.1</samp></td>\n</tr>\n\n</tbody>\n\
+  <tbody>\n<tr>\n    <td><samp>SALMON_QUANT</samp></td>\n    <td><samp>salmon</samp></td>\n\
+  \    <td><samp>1.9.0</samp></td>\n</tr>\n\n</tbody>\n<tbody>\n<tr>\n    <td><samp>SALMON_SE_GENE</samp></td>\n\
+  \    <td><samp>bioconductor-summarizedexperiment</samp></td>\n    <td><samp>1.24.0</samp></td>\n\
+  </tr>\n\n<tr>\n    <td><samp></samp></td>\n    <td><samp>r-base</samp></td>\n  \
+  \  <td><samp>4.1.1</samp></td>\n</tr>\n\n</tbody>\n<tbody>\n<tr>\n    <td><samp>SALMON_TX2GENE</samp></td>\n\
+  \    <td><samp>python</samp></td>\n    <td><samp>3.9.5</samp></td>\n</tr>\n\n</tbody>\n\
+  <tbody>\n<tr>\n    <td><samp>SALMON_TXIMPORT</samp></td>\n    <td><samp>bioconductor-tximeta</samp></td>\n\
+  \    <td><samp>1.12.0</samp></td>\n</tr>\n\n<tr>\n    <td><samp></samp></td>\n \
+  \   <td><samp>r-base</samp></td>\n    <td><samp>4.1.1</samp></td>\n</tr>\n\n</tbody>\n\
+  <tbody>\n<tr>\n    <td><samp>SAMPLESHEET_CHECK</samp></td>\n    <td><samp>python</samp></td>\n\
+  \    <td><samp>3.9.5</samp></td>\n</tr>\n\n</tbody>\n<tbody>\n<tr>\n    <td><samp>SAMTOOLS_FLAGSTAT</samp></td>\n\
+  \    <td><samp>samtools</samp></td>\n    <td><samp>1.16.1</samp></td>\n</tr>\n\n\
+  </tbody>\n<tbody>\n<tr>\n    <td><samp>SAMTOOLS_IDXSTATS</samp></td>\n    <td><samp>samtools</samp></td>\n\
+  \    <td><samp>1.16.1</samp></td>\n</tr>\n\n</tbody>\n<tbody>\n<tr>\n    <td><samp>SAMTOOLS_INDEX</samp></td>\n\
+  \    <td><samp>samtools</samp></td>\n    <td><samp>1.16.1</samp></td>\n</tr>\n\n\
+  </tbody>\n<tbody>\n<tr>\n    <td><samp>SAMTOOLS_SORT</samp></td>\n    <td><samp>samtools</samp></td>\n\
+  \    <td><samp>1.16.1</samp></td>\n</tr>\n\n</tbody>\n<tbody>\n<tr>\n    <td><samp>SAMTOOLS_STATS</samp></td>\n\
+  \    <td><samp>samtools</samp></td>\n    <td><samp>1.16.1</samp></td>\n</tr>\n\n\
+  </tbody>\n<tbody>\n<tr>\n    <td><samp>STAR_ALIGN</samp></td>\n    <td><samp>gawk</samp></td>\n\
+  \    <td><samp>5.1.0</samp></td>\n</tr>\n\n<tr>\n    <td><samp></samp></td>\n  \
+  \  <td><samp>samtools</samp></td>\n    <td><samp>1.16.1</samp></td>\n</tr>\n\n<tr>\n\
+  \    <td><samp></samp></td>\n    <td><samp>star</samp></td>\n    <td><samp>2.7.9a</samp></td>\n\
+  </tr>\n\n</tbody>\n<tbody>\n<tr>\n    <td><samp>STAR_GENOMEGENERATE</samp></td>\n\
+  \    <td><samp>gawk</samp></td>\n    <td><samp>5.1.0</samp></td>\n</tr>\n\n<tr>\n\
+  \    <td><samp></samp></td>\n    <td><samp>samtools</samp></td>\n    <td><samp>1.16.1</samp></td>\n\
+  </tr>\n\n<tr>\n    <td><samp></samp></td>\n    <td><samp>star</samp></td>\n    <td><samp>2.7.9a</samp></td>\n\
+  </tr>\n\n</tbody>\n<tbody>\n<tr>\n    <td><samp>STRINGTIE_STRINGTIE</samp></td>\n\
+  \    <td><samp>stringtie</samp></td>\n    <td><samp>2.2.1</samp></td>\n</tr>\n\n\
+  </tbody>\n<tbody>\n<tr>\n    <td><samp>SUBREAD_FEATURECOUNTS</samp></td>\n    <td><samp>subread</samp></td>\n\
+  \    <td><samp>2.0.1</samp></td>\n</tr>\n\n</tbody>\n<tbody>\n<tr>\n    <td><samp>TRIMGALORE</samp></td>\n\
+  \    <td><samp>cutadapt</samp></td>\n    <td><samp>3.4</samp></td>\n</tr>\n\n<tr>\n\
+  \    <td><samp></samp></td>\n    <td><samp>trimgalore</samp></td>\n    <td><samp>0.6.7</samp></td>\n\
+  </tr>\n\n</tbody>\n<tbody>\n<tr>\n    <td><samp>UCSC_BEDCLIP</samp></td>\n    <td><samp>ucsc</samp></td>\n\
+  \    <td><samp>377</samp></td>\n</tr>\n\n</tbody>\n<tbody>\n<tr>\n    <td><samp>UCSC_BEDGRAPHTOBIGWIG</samp></td>\n\
+  \    <td><samp>ucsc</samp></td>\n    <td><samp>377</samp></td>\n</tr>\n\n</tbody>\n\
+  <tbody>\n<tr>\n    <td><samp>UNTAR_SALMON_INDEX</samp></td>\n    <td><samp>untar</samp></td>\n\
+  \    <td><samp>1.30</samp></td>\n</tr>\n\n</tbody>\n<tbody>\n<tr>\n    <td><samp>Workflow</samp></td>\n\
+  \    <td><samp>Nextflow</samp></td>\n    <td><samp>24.10.4</samp></td>\n</tr>\n\n\
+  <tr>\n    <td><samp></samp></td>\n    <td><samp>nf-core/rnaseq</samp></td>\n   \
+  \ <td><samp>3.10</samp></td>\n</tr>\n\n</tbody>\n</table>"
+description: are collected at run time from the software output.
+id: software_versions
+plot_type: html
+section_href: https://github.com/nf-core/rnaseq
+section_name: nf-core/rnaseq Software Versions

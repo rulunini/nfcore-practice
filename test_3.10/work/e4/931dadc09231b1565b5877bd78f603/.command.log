@@ -1,0 +1,33 @@
+Unable to find image 'quay.io/biocontainers/picard:2.27.4--hdfd78af_0' locally
+2.27.4--hdfd78af_0: Pulling from biocontainers/picard
+6281c917a1f6: Pulling fs layer
+6281c917a1f6: Download complete
+Digest: sha256:9bde93cfd252ea74aa5400c13665862edee4d925553b0dc9301bb90d56a945d3
+Status: Downloaded newer image for quay.io/biocontainers/picard:2.27.4--hdfd78af_0
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+/usr/local/bin/picard: line 5: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+01:43:40.044 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/usr/local/share/picard-2.27.4-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
+[Wed Sep 24 01:43:40 GMT 2025] MarkDuplicates --INPUT WT_REP2.sorted.bam --OUTPUT WT_REP2.markdup.sorted.bam --METRICS_FILE WT_REP2.markdup.sorted.MarkDuplicates.metrics.txt --REMOVE_DUPLICATES false --ASSUME_SORTED true --TMP_DIR tmp --VALIDATION_STRINGENCY LENIENT --REFERENCE_SEQUENCE genome_gfp.fasta --MAX_SEQUENCES_FOR_DISK_READ_ENDS_MAP 50000 --MAX_FILE_HANDLES_FOR_READ_ENDS_MAP 8000 --SORTING_COLLECTION_SIZE_RATIO 0.25 --TAG_DUPLICATE_SET_MEMBERS false --REMOVE_SEQUENCING_DUPLICATES false --TAGGING_POLICY DontTag --CLEAR_DT true --DUPLEX_UMI false --FLOW_MODE false --FLOW_QUALITY_SUM_STRATEGY false --USE_END_IN_UNPAIRED_READS false --USE_UNPAIRED_CLIPPED_END false --UNPAIRED_END_UNCERTAINTY 0 --FLOW_SKIP_FIRST_N_FLOWS 0 --FLOW_Q_IS_KNOWN_END false --FLOW_EFFECTIVE_QUALITY_THRESHOLD 15 --ADD_PG_TAG_TO_READS true --DUPLICATE_SCORING_STRATEGY SUM_OF_BASE_QUALITIES --PROGRAM_RECORD_ID MarkDuplicates --PROGRAM_GROUP_NAME MarkDuplicates --READ_NAME_REGEX <optimized capture of last three ':' separated fields as numeric values> --OPTICAL_DUPLICATE_PIXEL_DISTANCE 100 --MAX_OPTICAL_DUPLICATE_SET_SIZE 300000 --VERBOSITY INFO --QUIET false --COMPRESSION_LEVEL 5 --MAX_RECORDS_IN_RAM 500000 --CREATE_INDEX false --CREATE_MD5_FILE false --GA4GH_CLIENT_SECRETS client_secrets.json --help false --version false --showHidden false --USE_JDK_DEFLATER false --USE_JDK_INFLATER false
+[Wed Sep 24 01:43:40 GMT 2025] Executing as root@27980cff6822 on Linux 6.10.11-linuxkit amd64; OpenJDK 64-Bit Server VM 11.0.15-internal+0-adhoc..src; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: Version:2.27.4-SNAPSHOT
+INFO	2025-09-24 01:43:40	MarkDuplicates	Start of doWork freeMemory: 18985696; totalMemory: 25165824; maxMemory: 6442450944
+INFO	2025-09-24 01:43:40	MarkDuplicates	Reading input file and constructing read end information.
+INFO	2025-09-24 01:43:40	MarkDuplicates	Will retain up to 23342213 data points before spilling to disk.
+WARNING	2025-09-24 01:43:40	AbstractOpticalDuplicateFinderCommandLineProgram	A field field parsed out of a read name was expected to contain an integer and did not. Read name: SRR6357072.6014972. Cause: String 'SRR6357072.6014972' did not start with a parsable number.
+INFO	2025-09-24 01:43:42	MarkDuplicates	Read 93895 records. 0 pairs never matched.
+INFO	2025-09-24 01:43:42	MarkDuplicates	After buildSortedReadEndLists freeMemory: 140727008; totalMemory: 346030080; maxMemory: 6442450944
+INFO	2025-09-24 01:43:42	MarkDuplicates	Will retain up to 201326592 duplicate indices before spilling to disk.
+INFO	2025-09-24 01:43:44	MarkDuplicates	Traversing read pair information and detecting duplicates.
+INFO	2025-09-24 01:43:44	MarkDuplicates	Traversing fragment information and detecting duplicates.
+INFO	2025-09-24 01:43:45	MarkDuplicates	Sorting list of duplicate records.
+INFO	2025-09-24 01:43:45	MarkDuplicates	After generateDuplicateIndexes freeMemory: 1091703592; totalMemory: 2710568960; maxMemory: 6442450944
+INFO	2025-09-24 01:43:45	MarkDuplicates	Marking 12183 records as duplicates.
+INFO	2025-09-24 01:43:45	MarkDuplicates	Found 0 optical duplicate clusters.
+INFO	2025-09-24 01:43:45	MarkDuplicates	Reads are assumed to be ordered by: coordinate
+INFO	2025-09-24 01:43:46	MarkDuplicates	Writing complete. Closing input iterator.
+INFO	2025-09-24 01:43:46	MarkDuplicates	Duplicate Index cleanup.
+INFO	2025-09-24 01:43:46	MarkDuplicates	Getting Memory Stats.
+INFO	2025-09-24 01:43:46	MarkDuplicates	Before output close freeMemory: 20997152; totalMemory: 28311552; maxMemory: 6442450944
+INFO	2025-09-24 01:43:46	MarkDuplicates	Closed outputs. Getting more Memory Stats.
+INFO	2025-09-24 01:43:46	MarkDuplicates	After output close freeMemory: 18163176; totalMemory: 25165824; maxMemory: 6442450944
+[Wed Sep 24 01:43:46 GMT 2025] picard.sam.markduplicates.MarkDuplicates done. Elapsed time: 0.11 minutes.
+Runtime.totalMemory()=25165824

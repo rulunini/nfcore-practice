@@ -1,0 +1,11 @@
+Unable to find image 'quay.io/biocontainers/ucsc-bedclip:377--h0b8a92a_2' locally
+377--h0b8a92a_2: Pulling from biocontainers/ucsc-bedclip
+6e4998981c08: Pulling fs layer
+4ca545ee6d5d: Pulling fs layer
+cefc4d495539: Pulling fs layer
+4ca545ee6d5d: Already exists
+cefc4d495539: Download complete
+6e4998981c08: Download complete
+Digest: sha256:d848a443bc2ee59504de4a2389abc196f48b3f1886938eb7d3c1cbf4a260b285
+Status: Downloaded newer image for quay.io/biocontainers/ucsc-bedclip:377--h0b8a92a_2
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested

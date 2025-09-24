@@ -1,0 +1,8 @@
+Unable to find image 'quay.io/biocontainers/qualimap:2.2.2d--1' locally
+2.2.2d--1: Pulling from biocontainers/qualimap
+f0731fc876b5: Pulling fs layer
+f0731fc876b5: Download complete
+Digest: sha256:04f35673c9616f20d1bd42bcbfe75ce97976db35ac14c367589b94def708c978
+Status: Downloaded newer image for quay.io/biocontainers/qualimap:2.2.2d--1
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+Picked up _JAVA_OPTIONS: -Djava.io.tmpdir=./tmp

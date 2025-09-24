@@ -1,0 +1,103 @@
+Unable to find image 'quay.io/biocontainers/salmon:1.9.0--h7e5ed60_1' locally
+1.9.0--h7e5ed60_1: Pulling from biocontainers/salmon
+bd138993b168: Pulling fs layer
+bd138993b168: Download complete
+Digest: sha256:e56485bfa26913aebaa6351b2ddb1308d0dc0352bf15e7f5431bc58ba5465809
+Status: Downloaded newer image for quay.io/biocontainers/salmon:1.9.0--h7e5ed60_1
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+Version Info: ### PLEASE UPGRADE SALMON ###
+### A newer version of salmon with important bug fixes and improvements is available. ####
+###
+The newest version, available at https://github.com/COMBINE-lab/salmon/releases
+contains new features, improvements, and bug fixes; please upgrade at your
+earliest convenience.
+###
+Sign up for the salmon mailing list to hear about new versions, features and updates at:
+https://oceangenomics.com/subscribe
+### salmon (selective-alignment-based) v1.9.0
+### [ program ] => salmon 
+### [ command ] => quant 
+### [ geneMap ] => { genome_gfp.gtf }
+### [ threads ] => { 2 }
+### [ libType ] => { A }
+### [ index ] => { salmon }
+### [ mates1 ] => { WT_REP1.subsampled_R1.fastq.gz }
+### [ mates2 ] => { WT_REP1.subsampled_R2.fastq.gz }
+### [ skipQuant ] => { }
+### [ output ] => { WT_REP1 }
+Logs will be written to WT_REP1/logs
+-----------------------------------------
+| Loading contig table | Time = 2.6806 ms
+-----------------------------------------
+size = 840
+-----------------------------------------
+| Loading contig offsets | Time = 1.3545 ms
+-----------------------------------------
+-----------------------------------------
+| Loading reference lengths | Time = 293.29 us
+-----------------------------------------
+[2025-09-24 01:40:41.842] [jointLog] [info] setting maxHashResizeThreads to 2
+[2025-09-24 01:40:41.842] [jointLog] [info] Fragment incompatibility prior below threshold.  Incompatible fragments will be ignored.
+[2025-09-24 01:40:41.842] [jointLog] [info] Usage of --validateMappings implies use of minScoreFraction. Since not explicitly specified, it is being set to 0.65
+[2025-09-24 01:40:41.843] [jointLog] [info] Setting consensusSlack to selective-alignment default of 0.35.
+[2025-09-24 01:40:41.843] [jointLog] [info] parsing read library format
+[2025-09-24 01:40:41.844] [jointLog] [info] There is 1 library.
+[2025-09-24 01:40:41.851] [jointLog] [info] Loading pufferfish index
+[2025-09-24 01:40:41.852] [jointLog] [info] Loading dense pufferfish index.
+-----------------------------------------
+| Loading mphf table | Time = 3.3432 ms
+-----------------------------------------
+size = 247935
+Number of ones: 839
+Number of ones per inventory item: 512
+Inventory entries filled: 2
+-----------------------------------------
+| Loading contig boundaries | Time = 5.6358 ms
+-----------------------------------------
+size = 247935
+-----------------------------------------
+| Loading sequence | Time = 1.447 ms
+-----------------------------------------
+size = 222765
+-----------------------------------------
+| Loading positions | Time = 2.7003 ms
+-----------------------------------------
+size = 381211
+-----------------------------------------
+| Loading reference sequence | Time = 1.0158 ms
+-----------------------------------------
+-----------------------------------------
+| Loading reference accumulative lengths | Time = 240.08 us
+-----------------------------------------
+[2025-09-24 01:40:41.881] [jointLog] [info] done
+[2025-09-24 01:40:41.915] [jointLog] [info] Index contained 126 targets
+[2025-09-24 01:40:41.916] [jointLog] [info] Number of decoys : 1
+[2025-09-24 01:40:41.916] [jointLog] [info] First decoy index : 125 
+
+
+
+
+
+
+
+
+
+
+
+
+[2025-09-24 01:40:42.373] [jointLog] [info] Automatically detected most likely library type as ISR
+
+[2025-09-24 01:40:42.537] [jointLog] [info] Thread saw mini-batch with a maximum of 0.66% zero probability fragments
+[2025-09-24 01:40:42.548] [jointLog] [info] Thread saw mini-batch with a maximum of 0.80% zero probability fragments
+[2025-09-24 01:40:42.559] [jointLog] [info] Computed 134 rich equivalence classes for further processing
+[2025-09-24 01:40:42.559] [jointLog] [info] Counted 78036 total reads in the equivalence classes 
+[2025-09-24 01:40:42.560] [jointLog] [info] Number of mappings discarded because of alignment score : 16312
+[2025-09-24 01:40:42.560] [jointLog] [info] Number of fragments entirely discarded because of alignment score : 10874
+[2025-09-24 01:40:42.560] [jointLog] [info] Number of fragments discarded because they are best-mapped to decoys : 6307
+[2025-09-24 01:40:42.560] [jointLog] [info] Number of fragments discarded because they have only dovetail (discordant) mappings to valid targets : 7651
+[2025-09-24 01:40:42.560] [jointLog] [warning] Only 78036 fragments were mapped, but the number of burn-in fragments was set to 5000000.
+The effective lengths have been computed using the observed mappings.
+
+[2025-09-24 01:40:42.560] [jointLog] [info] Mapping rate = 78.036%
+
+[2025-09-24 01:40:42.560] [jointLog] [info] finished quantifyLibrary()

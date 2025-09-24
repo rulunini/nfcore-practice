@@ -1,0 +1,7 @@
+Unable to find image 'quay.io/biocontainers/fq:0.9.1--h9ee0642_0' locally
+0.9.1--h9ee0642_0: Pulling from biocontainers/fq
+74abdaaec682: Pulling fs layer
+74abdaaec682: Download complete
+Digest: sha256:4018a43410a1c364043daca1acf792b1516bdc68c416bc7e73ce3395e770e913
+Status: Downloaded newer image for quay.io/biocontainers/fq:0.9.1--h9ee0642_0
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested

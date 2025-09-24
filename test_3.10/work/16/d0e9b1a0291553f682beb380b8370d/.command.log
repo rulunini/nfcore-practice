@@ -1,0 +1,77 @@
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+Version Info: ### PLEASE UPGRADE SALMON ###
+### A newer version of salmon with important bug fixes and improvements is available. ####
+###
+The newest version, available at https://github.com/COMBINE-lab/salmon/releases
+contains new features, improvements, and bug fixes; please upgrade at your
+earliest convenience.
+###
+Sign up for the salmon mailing list to hear about new versions, features and updates at:
+https://oceangenomics.com/subscribe
+# salmon (alignment-based) v1.9.0
+# [ program ] => salmon 
+# [ command ] => quant 
+# [ geneMap ] => { genome_gfp.gtf }
+# [ threads ] => { 2 }
+# [ libType ] => { SR }
+# [ targets ] => { transcriptome.fasta }
+# [ alignments ] => { RAP1_UNINDUCED_REP1.Aligned.toTranscriptome.out.bam }
+# [ output ] => { RAP1_UNINDUCED_REP1 }
+Logs will be written to RAP1_UNINDUCED_REP1/logs
+Library format { type:single end, relative orientation:none, strandedness:antisense }
+[2025-09-24 01:41:06.578] [jointLog] [info] setting maxHashResizeThreads to 2
+[2025-09-24 01:41:06.580] [jointLog] [info] Fragment incompatibility prior below threshold.  Incompatible fragments will be ignored.
+[2025-09-24 01:41:06.583] [jointLog] [info] numQuantThreads = 2
+parseThreads = 2
+Checking that provided alignment files have consistent headers . . . done
+Populating targets from aln = "RAP1_UNINDUCED_REP1.Aligned.toTranscriptome.out.bam", fasta = "transcriptome.fasta" . . .done
+
+
+
+
+[0;32mprocessed[0;31m 0 [0;32mreads in current round[0;0m[0;32mprocessed[0;31m 40990 [0;32mreads in current round[0;0m
+[2025-09-24 01:41:06.864] [jointLog] [info] replaced 0 non-ACGT nucleotides with random nucleotides
+killing thread 0 . . . donekilling thread 1 . . . done
+
+# observed = 40990 / # required = 50000000[A[A[A[A[A
+
+
+
+[2025-09-24 01:41:07.447] [jointLog] [info] Thread saw mini-batch with a maximum of 1.20% zero probability fragments
+[2025-09-24 01:41:07.448] [jointLog] [info] Thread saw mini-batch with a maximum of 1.20% zero probability fragments
+[2025-09-24 01:41:07.449] [jointLog] [info] 
+
+
+Completed first pass through the alignment file.
+Total # of mapped reads : 40990
+# of uniquely mapped reads : 35145
+# ambiguously mapped reads : 5845
+
+
+
+[2025-09-24 01:41:07.453] [jointLog] [info] Computed 99 rich equivalence classes for further processing
+[2025-09-24 01:41:07.453] [jointLog] [info] Counted 40711 total reads in the equivalence classes 
+[2025-09-24 01:41:07.454] [jointLog] [warning] Only 40990 fragments were mapped, but the number of burn-in fragments was set to 5000000.
+The effective lengths have been computed using the observed mappings.
+
+[2025-09-24 01:41:07.454] [jointLog] [info] starting optimizer
+[2025-09-24 01:41:07.460] [jointLog] [info] Marked 0 weighted equivalence classes as degenerate
+[2025-09-24 01:41:07.461] [jointLog] [info] iteration = 0 | max rel diff. = 324.424
+[2025-09-24 01:41:07.480] [jointLog] [info] iteration = 100 | max rel diff. = 0
+[2025-09-24 01:41:07.480] [jointLog] [info] finished optimizer
+[2025-09-24 01:41:07.480] [jointLog] [info] writing output
+
+Freeing memory used by read queue . . . 
+Joined parsing thread . . . "RAP1_UNINDUCED_REP1.Aligned.toTranscriptome.out.bam" 
+Closed all files . . . 
+Emptied frag queue. . . 
+Emptied Alignment Group Pool. . 
+Emptied Alignment Group Queue. . . done
+[2025-09-24 01:41:07.707] [jointLog] [info] Computing gene-level abundance estimates
+[2025-09-24 01:41:07.719] [jointLog] [warning] Feature has no GFF ID
+[2025-09-24 01:41:07.719] [jointLog] [warning] Feature has no GFF ID
+[2025-09-24 01:41:07.720] [jointLog] [info] There were 124 transcripts mapping to 124 genes
+[2025-09-24 01:41:07.721] [jointLog] [info] NOTE: We recommend using tximport (https://bioconductor.org/packages/release/bioc/html/tximport.html) for aggregating transcript-level salmon abundance estimates to the gene level.  It is more versatile, exposes more features, and allows considering multi-sample information during aggregation.
+[2025-09-24 01:41:07.724] [jointLog] [warning] couldn't find transcript named [Gfp_transgene_gene] in transcript <-> gene map; returning transcript as it's own gene
+[2025-09-24 01:41:07.724] [jointLog] [info] Aggregating expressions to gene level
+[2025-09-24 01:41:07.725] [jointLog] [info] done

@@ -1,0 +1,109 @@
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+Version Info: ### PLEASE UPGRADE SALMON ###
+### A newer version of salmon with important bug fixes and improvements is available. ####
+###
+The newest version, available at https://github.com/COMBINE-lab/salmon/releases
+contains new features, improvements, and bug fixes; please upgrade at your
+earliest convenience.
+###
+Sign up for the salmon mailing list to hear about new versions, features and updates at:
+https://oceangenomics.com/subscribe
+### salmon (selective-alignment-based) v1.9.0
+### [ program ] => salmon 
+### [ command ] => quant 
+### [ geneMap ] => { genome_gfp.gtf }
+### [ threads ] => { 2 }
+### [ libType ] => { ISR }
+### [ index ] => { salmon }
+### [ mates1 ] => { WT_REP1_primary_1.fastq.gz }
+### [ mates2 ] => { WT_REP1_primary_2.fastq.gz }
+### [ output ] => { WT_REP1 }
+Logs will be written to WT_REP1/logs
+-----------------------------------------
+| Loading contig table | Time = 740.62 us
+-----------------------------------------
+size = 840
+-----------------------------------------
+| Loading contig offsets | Time = 594.62 us
+-----------------------------------------
+-----------------------------------------
+| Loading reference lengths | Time = 51.666 us
+-----------------------------------------
+-----------------------------------------
+| Loading mphf table | Time = 1.0195 ms
+-----------------------------------------
+size = 247935
+Number of ones: 839
+Number of ones per inventory item: 512
+Inventory entries filled: 2
+-----------------------------------------
+| Loading contig boundaries | Time = 1.3265 ms
+-----------------------------------------
+size = 247935
+-----------------------------------------
+| Loading sequence | Time = 385.92 us
+-----------------------------------------
+size = 222765
+-----------------------------------------
+| Loading positions | Time = 683.71 us
+-----------------------------------------
+size = 381211
+-----------------------------------------
+| Loading reference sequence | Time = 337.29 us
+-----------------------------------------
+-----------------------------------------
+| Loading reference accumulative lengths | Time = 52.708 us
+-----------------------------------------
+[2025-09-24 01:41:48.974] [jointLog] [info] setting maxHashResizeThreads to 2
+[2025-09-24 01:41:48.975] [jointLog] [info] Fragment incompatibility prior below threshold.  Incompatible fragments will be ignored.
+[2025-09-24 01:41:48.975] [jointLog] [info] Usage of --validateMappings implies use of minScoreFraction. Since not explicitly specified, it is being set to 0.65
+[2025-09-24 01:41:48.975] [jointLog] [info] Setting consensusSlack to selective-alignment default of 0.35.
+[2025-09-24 01:41:48.975] [jointLog] [info] parsing read library format
+[2025-09-24 01:41:48.977] [jointLog] [info] There is 1 library.
+[2025-09-24 01:41:48.980] [jointLog] [info] Loading pufferfish index
+[2025-09-24 01:41:48.981] [jointLog] [info] Loading dense pufferfish index.
+[2025-09-24 01:41:48.989] [jointLog] [info] done
+[2025-09-24 01:41:49.013] [jointLog] [info] Index contained 126 targets
+[2025-09-24 01:41:49.013] [jointLog] [info] Number of decoys : 1
+[2025-09-24 01:41:49.013] [jointLog] [info] First decoy index : 125 
+
+
+
+
+
+
+
+
+
+
+
+
+[2025-09-24 01:41:49.484] [jointLog] [info] Thread saw mini-batch with a maximum of 0.78% zero probability fragments
+[2025-09-24 01:41:49.486] [jointLog] [info] Thread saw mini-batch with a maximum of 0.74% zero probability fragments
+[2025-09-24 01:41:49.497] [jointLog] [info] Computed 96 rich equivalence classes for further processing
+[2025-09-24 01:41:49.497] [jointLog] [info] Counted 79266 total reads in the equivalence classes 
+[2025-09-24 01:41:49.497] [jointLog] [info] Number of mappings discarded because of alignment score : 7200
+[2025-09-24 01:41:49.497] [jointLog] [info] Number of fragments entirely discarded because of alignment score : 8632
+[2025-09-24 01:41:49.497] [jointLog] [info] Number of fragments discarded because they are best-mapped to decoys : 6268
+[2025-09-24 01:41:49.497] [jointLog] [info] Number of fragments discarded because they have only dovetail (discordant) mappings to valid targets : 116
+[2025-09-24 01:41:49.498] [jointLog] [warning] Only 79266 fragments were mapped, but the number of burn-in fragments was set to 5000000.
+The effective lengths have been computed using the observed mappings.
+
+[2025-09-24 01:41:49.498] [jointLog] [info] Mapping rate = 79.8851%
+
+[2025-09-24 01:41:49.498] [jointLog] [info] finished quantifyLibrary()
+[2025-09-24 01:41:49.500] [jointLog] [info] Starting optimizer
+[2025-09-24 01:41:49.508] [jointLog] [info] Marked 0 weighted equivalence classes as degenerate
+[2025-09-24 01:41:49.510] [jointLog] [info] iteration = 0 | max rel diff. = 669.483
+[2025-09-24 01:41:49.521] [jointLog] [info] iteration = 100 | max rel diff. = 0
+[2025-09-24 01:41:49.521] [jointLog] [info] Finished optimizer
+[2025-09-24 01:41:49.521] [jointLog] [info] writing output 
+
+[2025-09-24 01:41:49.525] [jointLog] [info] Computing gene-level abundance estimates
+[2025-09-24 01:41:49.536] [jointLog] [warning] Feature has no GFF ID
+[2025-09-24 01:41:49.536] [jointLog] [warning] Feature has no GFF ID
+[2025-09-24 01:41:49.537] [jointLog] [info] There were 124 transcripts mapping to 124 genes
+[2025-09-24 01:41:49.537] [jointLog] [info] NOTE: We recommend using tximport (https://bioconductor.org/packages/release/bioc/html/tximport.html) for aggregating transcript-level salmon abundance estimates to the gene level.  It is more versatile, exposes more features, and allows considering multi-sample information during aggregation.
+[2025-09-24 01:41:49.540] [jointLog] [warning] couldn't find transcript named [Gfp_transgene_gene] in transcript <-> gene map; returning transcript as it's own gene
+[2025-09-24 01:41:49.541] [jointLog] [info] Aggregating expressions to gene level
+[2025-09-24 01:41:49.544] [jointLog] [info] done

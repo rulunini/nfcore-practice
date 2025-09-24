@@ -1,0 +1,1 @@
+/Users/sohee/Gitrulu/nfcore-practice/test_3.10/work/17/9b25c97aa11250d27c0e58e85952c9/RAP1_IAA_30M_REP1.markdup.sorted.MarkDuplicates.metrics.txt

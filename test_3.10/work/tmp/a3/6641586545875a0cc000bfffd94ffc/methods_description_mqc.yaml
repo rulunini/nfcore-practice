@@ -1,0 +1,25 @@
+id: "nf-core-rnaseq-methods-description"
+description: "Suggested text and references to use when describing pipeline usage within the methods section of a publication."
+section_name: "nf-core/rnaseq Methods Description"
+section_href: "https://github.com/nf-core/rnaseq"
+plot_type: "html"
+## TODO nf-core: Update the HTML below to your prefered methods description, e.g. add publication citation for this pipeline
+## You inject any metadata in the Nextflow '[runName:angry_meitner, scriptId:6b989c60f8b09b62bd16a252d522ee2e, scriptFile:/Users/sohee/.nextflow/assets/nf-core/rnaseq/main.nf, scriptName:main.nf, repository:https://github.com/nf-core/rnaseq, commitId:adce7ce9abc8f6b338b4f53d0d988ff9a0fd52ff, revision:3.10, start:2025-09-24T10:39:15.122045+09:00, complete:null, duration:null, container:[:], commandLine:nextflow run nf-core/rnaseq -profile test,docker --outdir ./ -r 3.10, nextflow:nextflow.NextflowMeta(version:24.10.4, build:5934, timestamp:20-01-2025 16:47 UTC, preview:nextflow.NextflowMeta$Preview@337c0ee4, enable:nextflow.NextflowMeta$Features@67b09e34, dsl2:true, strictModeEnabled:false, moduleBinariesEnabled:false), success:false, projectDir:/Users/sohee/.nextflow/assets/nf-core/rnaseq, projectName:nf-core/rnaseq, launchDir:/Users/sohee/Gitrulu/nfcore-practice/test_3.10, outputDir:/Users/sohee/Gitrulu/nfcore-practice/test_3.10/results, workDir:/Users/sohee/Gitrulu/nfcore-practice/test_3.10/work, homeDir:/Users/sohee, userName:sohee, exitStatus:null, errorMessage:null, errorReport:null, profile:test,docker, sessionId:ff2e1fb2-f2cb-4116-9260-be48472d34d3, resume:false, stubRun:false, preview:false, containerEngine:docker, wave:WaveMetadata(enabled:false), fusion:FusionMetadata(enabled:false, version:null), configFiles:[/Users/sohee/.nextflow/assets/nf-core/rnaseq/nextflow.config], stats:WorkflowStats[succeededCount=0; failedCount=0; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=0ms; failedDuration=0ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=0; peakCpus=0; peakMemory=0; ], manifest:nextflow.config.Manifest@1d8dc303, failOnIgnore:false]' object
+data: |
+  <h4>Methods</h4>
+  <p>Data was processed using nf-core/rnaseq v3.10 (doi: <a href='https://doi.org/https://doi.org/10.5281/zenodo.1400710'>https://doi.org/10.5281/zenodo.1400710</a>) of the nf-core collection of workflows (<a href="https://doi.org/10.1038/s41587-020-0439-x">Ewels <em>et al.</em>, 2020</a>).</p>
+  <p>The pipeline was executed with Nextflow v24.10.4 (<a href="https://doi.org/10.1038/nbt.3820">Di Tommaso <em>et al.</em>, 2017</a>) with the following command:</p>
+  <pre><code>nextflow run nf-core/rnaseq -profile test,docker --outdir ./ -r 3.10</code></pre>
+  <h4>References</h4>
+  <ul>
+    <li>Di Tommaso, P., Chatzou, M., Floden, E. W., Barja, P. P., Palumbo, E., & Notredame, C. (2017). Nextflow enables reproducible computational workflows. Nature Biotechnology, 35(4), 316-319. <a href="https://doi.org/10.1038/nbt.3820">https://doi.org/10.1038/nbt.3820</a></li>
+    <li>Ewels, P. A., Peltzer, A., Fillinger, S., Patel, H., Alneberg, J., Wilm, A., Garcia, M. U., Di Tommaso, P., & Nahnsen, S. (2020). The nf-core framework for community-curated bioinformatics pipelines. Nature Biotechnology, 38(3), 276-278. <a href="https://doi.org/10.1038/s41587-020-0439-x">https://doi.org/10.1038/s41587-020-0439-x</a></li>
+  </ul>
+  <div class="alert alert-info">
+    <h5>Notes:</h5>
+    <ul>
+      
+      <li>The command above does not include parameters contained in any configs or profiles that may have been used. Ensure the config file is also uploaded with your publication!</li>
+      <li>You should also cite all software used within this run. Check the "Software Versions" of this report to get version information.</li>
+    </ul>
+  </div>

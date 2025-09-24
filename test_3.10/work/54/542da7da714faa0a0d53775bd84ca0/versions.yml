@@ -1,0 +1,3 @@
+"NFCORE_RNASEQ:RNASEQ:QUANTIFY_SALMON:SALMON_SE_GENE_SCALED":
+    r-base: 4.1.1
+    bioconductor-summarizedexperiment: 1.24.0

@@ -1,0 +1,48 @@
+
+  Michael I. Love, Charlotte Soneson, Peter F. Hickey, Lisa K. Johnson,
+  N. Tessa Pierce, Lori Shepherd, Martin Morgan, Rob Patro Tximeta:
+  Reference sequence checksums for provenance identification in RNA-seq
+  PLOS Computational Biology 16(2): e1007664
+
+A BibTeX entry for LaTeX users is
+
+  @Article{,
+    title = {Tximeta: Reference sequence checksums for provenance identification in RNA-seq},
+    author = {Michael I. Love and Charlotte Soneson and Peter F. Hickey and Lisa K. Johnson and N. Tessa Pierce and Lori Shepherd and Martin Morgan and Rob Patro},
+    year = {2020},
+    volume = {16},
+    issue = {2},
+    pages = {e1007664},
+    journal = {PLOS Computational Biology},
+    doi = {10.1371/journal.pcbi.1007664},
+  }
+
+R version 4.1.1 (2021-08-10)
+Platform: x86_64-conda-linux-gnu (64-bit)
+Running under: Debian GNU/Linux 10 (buster)
+
+Matrix products: default
+BLAS/LAPACK: /usr/local/lib/libopenblasp-r0.3.18.so
+
+locale:
+ [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8       
+ [4] LC_COLLATE=C.UTF-8     LC_MONETARY=C.UTF-8    LC_MESSAGES=C.UTF-8   
+ [7] LC_PAPER=C.UTF-8       LC_NAME=C              LC_ADDRESS=C          
+[10] LC_TELEPHONE=C         LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   
+
+attached base packages:
+[1] stats4    stats     graphics  grDevices utils     datasets  methods  
+[8] base     
+
+other attached packages:
+ [1] tximport_1.22.0             SummarizedExperiment_1.24.0
+ [3] Biobase_2.54.0              GenomicRanges_1.46.0       
+ [5] GenomeInfoDb_1.30.0         IRanges_2.28.0             
+ [7] S4Vectors_0.32.0            BiocGenerics_0.40.0        
+ [9] MatrixGenerics_1.6.0        matrixStats_0.61.0         
+
+loaded via a namespace (and not attached):
+ [1] lattice_0.20-45        bitops_1.0-7           grid_4.1.1            
+ [4] jsonlite_1.7.2         zlibbioc_1.40.0        XVector_0.34.0        
+ [7] Matrix_1.3-4           tools_4.1.1            RCurl_1.98-1.5        
+[10] DelayedArray_0.20.0    compiler_4.1.1         GenomeInfoDbData_1.2.7

@@ -1,0 +1,7 @@
+Unable to find image 'quay.io/biocontainers/ucsc-bedgraphtobigwig:377--h446ed27_1' locally
+377--h446ed27_1: Pulling from biocontainers/ucsc-bedgraphtobigwig
+e6c9520c65db: Pulling fs layer
+e6c9520c65db: Download complete
+Digest: sha256:d5c4b218c44ccb72aa909bdf0e9f42e4a0b0ad3988f5df2e1e90c37e945269a0
+Status: Downloaded newer image for quay.io/biocontainers/ucsc-bedgraphtobigwig:377--h446ed27_1
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested

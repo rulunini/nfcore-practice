@@ -1,0 +1,29 @@
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+java -ea -Xmx6g -Xms6g -cp /usr/local/opt/bbmap-39.01-0/current/ align2.BBSplitter ow=t fastareadlen=500 minhits=1 minratio=0.56 maxindel=20 qtrim=rl untrim=t trimq=6 -Xmx6g ref_primary=genome_gfp.fasta ref_sarscov2=GCA_009858895.3_ASM985889v3_genomic.200409.fna ref_human=chr22_23800000-23980000.fa path=bbsplit threads=2 build=1
+Executing align2.BBSplitter [ow=t, fastareadlen=500, minhits=1, minratio=0.56, maxindel=20, qtrim=rl, untrim=t, trimq=6, -Xmx6g, ref_primary=genome_gfp.fasta, ref_sarscov2=GCA_009858895.3_ASM985889v3_genomic.200409.fna, ref_human=chr22_23800000-23980000.fa, path=bbsplit, threads=2, build=1]
+
+Creating merged reference file bbsplit/ref/genome/1/merged_ref_8374379829187813017.fa.gz
+Ref merge time:     	0.147 seconds.
+Executing align2.BBMap [ow=t, fastareadlen=500, minhits=1, minratio=0.56, maxindel=20, qtrim=rl, untrim=t, trimq=6, threads=2, build=1, ref=bbsplit/ref/genome/1/merged_ref_8374379829187813017.fa.gz]
+Version 39.01
+
+Set MINIMUM_ALIGNMENT_SCORE_RATIO to 0.560
+Set threads to 2
+No output file.
+NOTE:	Deleting contents of bbsplit/ref/genome/1 because reference is specified and overwrite=true
+Writing reference.
+Executing dna.FastaToChromArrays2 [bbsplit/ref/genome/1/merged_ref_8374379829187813017.fa.gz, 1, writeinthread=false, genscaffoldinfo=true, retain, waitforwriting=false, gz=true, maxlen=536670912, writechroms=true, minscaf=1, midpad=300, startpad=8000, stoppad=8000, nodisk=false]
+
+Set genScaffoldInfo=true
+Writing chunk 1
+Set genome to 1
+
+Loaded Reference:	0.005 seconds.
+Loading index for chunk 1-1, build 1
+No index available; generating from reference genome: /Users/sohee/Gitrulu/nfcore-practice/test_3.10/work/85/d97cf9aa4b141a3a8cd1cc6dde7531/bbsplit/ref/index/1/chr1_index_k13_c12_b1.block
+Indexing threads started for block 0-1
+Indexing threads finished for block 0-1
+Generated Index:	0.811 seconds.
+No reads to process; quitting.
+
+Total time:     	0.916 seconds.

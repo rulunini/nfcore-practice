@@ -1,0 +1,7 @@
+Unable to find image 'quay.io/biocontainers/bedtools:2.30.0--hc088bd4_0' locally
+2.30.0--hc088bd4_0: Pulling from biocontainers/bedtools
+6fa92a14c2e5: Pulling fs layer
+6fa92a14c2e5: Download complete
+Digest: sha256:b0018bd0a10853e19ee92f6d46d8d12f1c41e516845105e1f02c91b4d7b961b1
+Status: Downloaded newer image for quay.io/biocontainers/bedtools:2.30.0--hc088bd4_0
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested

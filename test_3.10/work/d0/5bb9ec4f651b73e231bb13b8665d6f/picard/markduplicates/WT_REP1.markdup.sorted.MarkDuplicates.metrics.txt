@@ -1,0 +1,1 @@
+/Users/sohee/Gitrulu/nfcore-practice/test_3.10/work/f8/77d12bca59d2ed2161c923db6219b0/WT_REP1.markdup.sorted.MarkDuplicates.metrics.txt

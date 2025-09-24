@@ -1,0 +1,32 @@
+Unable to find image 'quay.io/biocontainers/rseqc:3.0.1--py37h516909a_1' locally
+3.0.1--py37h516909a_1: Pulling from biocontainers/rseqc
+64278c93a027: Pulling fs layer
+64278c93a027: Download complete
+Digest: sha256:837221f4cb062588b8c7951d59a51f06237563eaef17af965de2fdc68f7e8f18
+Status: Downloaded newer image for quay.io/biocontainers/rseqc:3.0.1--py37h516909a_1
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+null device 
+          1 
+reading reference bed file:  genome_gfp.bed  ...  Done! Total 5 known splicing junctions.
+Load BAM file ...  Done
+shuffling alignments ... Done
+sampling 5% (5) splicing reads. 4 splicing junctions. 1 known splicing junctions. 3 novel splicing junctions.
+sampling 10% (11) splicing reads. 8 splicing junctions. 2 known splicing junctions. 6 novel splicing junctions.
+sampling 15% (16) splicing reads. 10 splicing junctions. 2 known splicing junctions. 8 novel splicing junctions.
+sampling 20% (22) splicing reads. 12 splicing junctions. 2 known splicing junctions. 10 novel splicing junctions.
+sampling 25% (28) splicing reads. 15 splicing junctions. 2 known splicing junctions. 13 novel splicing junctions.
+sampling 30% (33) splicing reads. 16 splicing junctions. 2 known splicing junctions. 14 novel splicing junctions.
+sampling 35% (39) splicing reads. 19 splicing junctions. 2 known splicing junctions. 17 novel splicing junctions.
+sampling 40% (44) splicing reads. 21 splicing junctions. 2 known splicing junctions. 19 novel splicing junctions.
+sampling 45% (50) splicing reads. 23 splicing junctions. 2 known splicing junctions. 21 novel splicing junctions.
+sampling 50% (56) splicing reads. 26 splicing junctions. 2 known splicing junctions. 24 novel splicing junctions.
+sampling 55% (61) splicing reads. 28 splicing junctions. 2 known splicing junctions. 26 novel splicing junctions.
+sampling 60% (67) splicing reads. 31 splicing junctions. 2 known splicing junctions. 29 novel splicing junctions.
+sampling 65% (72) splicing reads. 33 splicing junctions. 2 known splicing junctions. 31 novel splicing junctions.
+sampling 70% (78) splicing reads. 34 splicing junctions. 2 known splicing junctions. 32 novel splicing junctions.
+sampling 75% (84) splicing reads. 35 splicing junctions. 2 known splicing junctions. 33 novel splicing junctions.
+sampling 80% (89) splicing reads. 39 splicing junctions. 2 known splicing junctions. 37 novel splicing junctions.
+sampling 85% (95) splicing reads. 40 splicing junctions. 2 known splicing junctions. 38 novel splicing junctions.
+sampling 90% (100) splicing reads. 40 splicing junctions. 2 known splicing junctions. 38 novel splicing junctions.
+sampling 95% (106) splicing reads. 41 splicing junctions. 2 known splicing junctions. 39 novel splicing junctions.
+sampling 100% (112) splicing reads. 42 splicing junctions. 2 known splicing junctions. 40 novel splicing junctions.

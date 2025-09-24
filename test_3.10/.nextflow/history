@@ -1,0 +1,1 @@
+2025-09-24 10:39:15	12m 42s	angry_meitner	OK	adce7ce9abc8f6b338b4f53d0d988ff9a0fd52ff	ff2e1fb2-f2cb-4116-9260-be48472d34d3	nextflow run nf-core/rnaseq -profile test,docker --outdir ./ -r 3.10

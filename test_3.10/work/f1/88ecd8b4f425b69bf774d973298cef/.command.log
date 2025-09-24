@@ -1,0 +1,21 @@
+Unable to find image 'ubuntu:20.04' locally
+20.04: Pulling from library/ubuntu
+ecd83b6c3544: Pulling fs layer
+ecd83b6c3544: Download complete
+Digest: sha256:8feb4d8ca5354def3d8fce243717141ce31e2c428701f6682bd2fafe15388214
+Status: Downloaded newer image for ubuntu:20.04
+salmon/complete_ref_lens.bin
+salmon/pre_indexing.log
+salmon/versionInfo.json
+salmon/duplicate_clusters.tsv
+salmon/mphf.bin
+salmon/pos.bin
+salmon/reflengths.bin
+salmon/ctable.bin
+salmon/refseq.bin
+salmon/rank.bin
+salmon/refAccumLengths.bin
+salmon/ctg_offsets.bin
+salmon/seq.bin
+salmon/ref_indexing.log
+salmon/info.json

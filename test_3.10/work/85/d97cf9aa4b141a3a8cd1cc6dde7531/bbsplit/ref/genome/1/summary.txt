@@ -1,0 +1,14 @@
+#Summary
+#Generated on	Wed Sep 24 01:40:09 GMT 2025
+#Version	5
+chroms	1
+bases	457751
+defined	440851
+undefined	16900
+contigs	4
+scaffolds	4
+interpad	300
+source	/Users/sohee/Gitrulu/nfcore-practice/test_3.10/work/85/d97cf9aa4b141a3a8cd1cc6dde7531/bbsplit/ref/genome/1/merged_ref_8374379829187813017.fa.gz
+bytes	141465
+last modified	1758678009741
+scafprefixes	true

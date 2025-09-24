@@ -1,0 +1,54 @@
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+
+        ==========     _____ _    _ ____  _____  ______          _____  
+        =====         / ____| |  | |  _ \|  __ \|  ____|   /\   |  __ \ 
+          =====      | (___ | |  | | |_) | |__) | |__     /  \  | |  | |
+            ====      \___ \| |  | |  _ <|  _  /|  __|   / /\ \ | |  | |
+              ====    ____) | |__| | |_) | | \ \| |____ / ____ \| |__| |
+        ==========   |_____/ \____/|____/|_|  \_\______/_/    \_\_____/
+	  v2.0.1
+
+//========================== featureCounts setting ===========================\\
+||                                                                            ||
+||             Input files : 1 BAM file                                       ||
+||                           o WT_REP2.markdup.sorted.bam                     ||
+||                                                                            ||
+||             Output file : WT_REP2.featureCounts.txt                        ||
+||                 Summary : WT_REP2.featureCounts.txt.summary                ||
+||              Annotation : genome_gfp.gtf (GTF)                             ||
+||      Dir for temp files : ./                                               ||
+||                                                                            ||
+||                 Threads : 2                                                ||
+||                   Level : meta-feature level                               ||
+||              Paired-end : yes                                              ||
+||      Multimapping reads : not counted                                      ||
+|| Multi-overlapping reads : not counted                                      ||
+||   Min overlapping bases : 1                                                ||
+||                                                                            ||
+||          Chimeric reads : not counted                                      ||
+||        Both ends mapped : required                                         ||
+||                                                                            ||
+\\============================================================================//
+
+//================================= Running ==================================\\
+||                                                                            ||
+|| Load annotation file genome_gfp.gtf ...                                    ||
+||    Features : 130                                                          ||
+||    Meta-features : 6                                                       ||
+||    Chromosomes/contigs : 2                                                 ||
+||                                                                            ||
+|| Process BAM file WT_REP2.markdup.sorted.bam...                             ||
+||    Strand specific : reversely stranded                                    ||
+||    Paired-end reads are included.                                          ||
+||    Total alignments : 46948                                                ||
+||    Successfully assigned alignments : 41547 (88.5%)                        ||
+||    Running time : 0.00 minutes                                             ||
+||                                                                            ||
+|| Write the final count table.                                               ||
+|| Write the read assignment summary.                                         ||
+||                                                                            ||
+|| Summary of counting results can be found in file "WT_REP2.featureCounts.t  ||
+|| xt.summary"                                                                ||
+||                                                                            ||
+\\============================================================================//
+

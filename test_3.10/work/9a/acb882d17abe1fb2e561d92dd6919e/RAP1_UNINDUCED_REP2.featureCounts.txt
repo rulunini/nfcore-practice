@@ -1,0 +1,1 @@
+/Users/sohee/Gitrulu/nfcore-practice/test_3.10/work/0a/a35cb6d4e146e914c553b5450b5a21/RAP1_UNINDUCED_REP2.featureCounts.txt

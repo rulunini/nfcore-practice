@@ -1,0 +1,25 @@
+Java memory size is set to 6G
+Launching application...
+
+QualiMap v.2.2.2-dev
+Built on 2019-11-11 14:05
+
+Selected tool: rnaseq
+Initializing regions from genome_gfp.gtf...
+
+
+Initialized 601 regions it total
+
+Starting constructing transcripts for RNA-seq stats...
+Finished constructing transcripts
+
+Starting BAM file analysis
+
+
+Processed 98201 reads in total
+
+BAM file analysis finished
+Creating plots
+Writing HTML report...
+HTML report created successfully
+

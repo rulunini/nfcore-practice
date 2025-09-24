@@ -1,0 +1,20 @@
+Unable to find image 'quay.io/biocontainers/stringtie:2.2.1--hecb563c_2' locally
+2.2.1--hecb563c_2: Pulling from biocontainers/stringtie
+620ba6d61582: Pulling fs layer
+620ba6d61582: Download complete
+Digest: sha256:8f557d827442a99b264caf623e075f4e3bd4421b2ffc8de69bc45156a076dadf
+Status: Downloaded newer image for quay.io/biocontainers/stringtie:2.2.1--hecb563c_2
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+Running StringTie 2.2.1. Command line:
+stringtie RAP1_UNINDUCED_REP1.markdup.sorted.bam --rf -G genome_gfp.gtf -o RAP1_UNINDUCED_REP1.transcripts.gtf -A RAP1_UNINDUCED_REP1.gene.abundance.txt -C RAP1_UNINDUCED_REP1.coverage.gtf -b RAP1_UNINDUCED_REP1.ballgown -p 2 -v -e
+[09/24 01:44:58] Loading reference annotation (guides)..
+[09/24 01:44:58] 126 reference transcripts loaded.
+Default stack size for threads: 8388608
+[09/24 01:44:58]>bundle I:335-792 [1 alignments (1 distinct), 0 junctions, 2 guides] begins processing...
+[09/24 01:44:58]^bundle I:335-792 done (2 processed potential transcripts).
+[09/24 01:44:58]>bundle I:1669-230088 [43178 alignments (15442 distinct), 94 junctions, 122 guides] begins processing...
+[09/24 01:44:58] 1 aligned fragments found.
+[09/24 01:44:58]^bundle I:1669-230088 done (90 processed potential transcripts).
+[09/24 01:44:58] All threads finished.
+Total count of aligned fragments: 42972.5
+Fragment coverage length: 98.7228

@@ -1,0 +1,3 @@
+/Users/sohee/Gitrulu/nfcore-practice/test_3.10/work/68/b2678093c86162f91d6a0569102ea2/genome_gfp.fasta
+/Users/sohee/Gitrulu/nfcore-practice/test_3.10/work/stage-ff2e1fb2-f2cb-4116-9260-be48472d34d3/e9/9527d03d8c96a3eeec1a2778c4c579/GCA_009858895.3_ASM985889v3_genomic.200409.fna
+/Users/sohee/Gitrulu/nfcore-practice/test_3.10/work/stage-ff2e1fb2-f2cb-4116-9260-be48472d34d3/0b/e3ea3d6599d49563e0079e5a908403/chr22_23800000-23980000.fa

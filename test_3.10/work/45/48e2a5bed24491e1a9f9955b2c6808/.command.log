@@ -1,0 +1,33 @@
+Unable to find image 'quay.io/biocontainers/qualimap:2.2.2d--1' locally
+2.2.2d--1: Pulling from biocontainers/qualimap
+f0731fc876b5: Pulling fs layer
+f0731fc876b5: Download complete
+Digest: sha256:04f35673c9616f20d1bd42bcbfe75ce97976db35ac14c367589b94def708c978
+Status: Downloaded newer image for quay.io/biocontainers/qualimap:2.2.2d--1
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+Java memory size is set to 6G
+Launching application...
+
+Picked up _JAVA_OPTIONS: -Djava.io.tmpdir=./tmp
+QualiMap v.2.2.2-dev
+Built on 2019-11-11 14:05
+
+Selected tool: rnaseq
+Initializing regions from genome_gfp.gtf...
+
+
+Initialized 601 regions it total
+
+Starting constructing transcripts for RNA-seq stats...
+Finished constructing transcripts
+
+Starting BAM file analysis
+
+
+Processed 48977 reads in total
+
+BAM file analysis finished
+Creating plots
+Writing HTML report...
+HTML report created successfully
+

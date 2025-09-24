@@ -1,0 +1,17 @@
+#id: 'star_salmon_deseq2_pca'
+#section_name: 'STAR_SALMON DESeq2 PCA plot'
+#description: "PCA plot between samples in the experiment.
+#              These values are calculated using <a href='https://bioconductor.org/packages/release/bioc/html/DESeq2.html'>DESeq2</a>
+#              in the <a href='https://github.com/nf-core/atacseq/blob/master/bin/deseq2_qc.r'><code>deseq2_qc.r</code></a> script."
+#plot_type: 'scatter'
+#anchor: 'star_salmon_deseq2_pca'
+#pconfig:
+#    title: 'DESeq2: Principal component plot'
+#    xlab: PC1
+#    ylab: PC2
+"sample"	"PC1: 51% variance"	"PC2: 22% variance"
+"RAP1_UNINDUCED_REP2"	-1.43622572498523	-0.0881357141939101
+"RAP1_UNINDUCED_REP1"	-0.840403092337961	-1.12867750790146
+"RAP1_IAA_30M_REP1"	-0.620571223205377	1.37414167399383
+"WT_REP2"	1.42028945183898	-0.17636502278703
+"WT_REP1"	1.47691058868959	0.0190365708885675

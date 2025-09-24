@@ -1,0 +1,12 @@
+	STAR --genomeDir star --readFilesIn RAP1_UNINDUCED_REP1_primary.fastq.gz --runThreadN 2 --outFileNamePrefix RAP1_UNINDUCED_REP1. --sjdbGTFfile genome_gfp.gtf --outSAMattrRGline ID:RAP1_UNINDUCED_REP1 SM:RAP1_UNINDUCED_REP1 --quantMode TranscriptomeSAM --twopassMode Basic --outSAMtype BAM Unsorted --readFilesCommand zcat --runRNGseed 0 --outFilterMultimapNmax 20 --alignSJDBoverhangMin 1 --outSAMattributes NH HI AS NM MD --quantTranscriptomeBan Singleend --outSAMstrandField intronMotif
+	STAR version: 2.7.9a   compiled: 2021-05-04T09:43:56-0400 vega:/home/dobin/data/STAR/STARcode/STAR.master/source
+Sep 24 01:40:49 ..... started STAR run
+Sep 24 01:40:49 ..... loading genome
+Sep 24 01:40:49 ..... processing annotations GTF
+Sep 24 01:40:49 ..... inserting junctions into the genome indices
+Sep 24 01:40:49 ..... started 1st pass mapping
+Sep 24 01:40:54 ..... finished 1st pass mapping
+Sep 24 01:40:54 ..... inserting junctions into the genome indices
+Sep 24 01:40:54 ..... started mapping
+Sep 24 01:41:01 ..... finished mapping
+Sep 24 01:41:01 ..... finished successfully

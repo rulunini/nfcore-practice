@@ -1,0 +1,7 @@
+Unable to find image 'quay.io/biocontainers/fastqc:0.11.9--0' locally
+0.11.9--0: Pulling from biocontainers/fastqc
+6d92b3a49ebf: Pulling fs layer
+6d92b3a49ebf: Download complete
+Digest: sha256:70de12400206b9c1784c8dfd019cfe4e42eed9a42eabf6c61eb68342843bdaab
+Status: Downloaded newer image for quay.io/biocontainers/fastqc:0.11.9--0
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested

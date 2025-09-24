@@ -1,0 +1,43 @@
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+
+  /// MultiQC 🔍 | v1.13
+
+|           multiqc | MultiQC Version v1.31 now available!
+|           multiqc | Only using modules: custom_content, fastqc, cutadapt, sortmerna, star, hisat2, rsem, salmon, samtools, picard, preseq, rseqc, qualimap
+|           multiqc | Search path : /Users/sohee/Gitrulu/nfcore-practice/test_3.10/work/d0/5bb9ec4f651b73e231bb13b8665d6f
+|            report | Skipping 17 file search patterns
+|         searching | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 347/347  
+|    custom_content | software_versions: Found 1 sample (html)
+|    custom_content | nf-core-rnaseq-methods-description: Found 1 sample (html)
+|    custom_content | nf-core-rnaseq-summary: Found 1 sample (html)
+|    custom_content | salmon_deseq2_clustering: Found 5 samples (heatmap)
+|    custom_content | salmon_deseq2_pca: Found 5 samples (scatter)
+|    custom_content | star_salmon_deseq2_pca: Found 5 samples (scatter)
+|    custom_content | star_salmon_deseq2_clustering: Found 5 samples (heatmap)
+|    custom_content | dupradar: Found 5 samples (linegraph)
+|    custom_content | DupInt: Found 5 General Statistics columns
+|    custom_content | biotype-gs: Found 5 General Statistics columns
+|    custom_content | biotype_counts: Found 5 samples (bargraph)
+|            picard | Found 5 MarkDuplicates reports
+|          qualimap | Found 5 RNASeq reports
+|             rseqc | Found 5 read_distribution reports
+|             rseqc | Found 3 inner_distance reports
+|             rseqc | Found 5 read_duplication reports
+|             rseqc | Found 5 junction_annotation reports
+|             rseqc | Found 5 junction_saturation reports
+|             rseqc | Found 5 infer_experiment reports
+|             rseqc | Found 5 bam_stat reports
+|            salmon | Found 5 meta reports
+|            salmon | Found 5 fragment length distributions
+|          samtools | Found 5 stats reports
+|          samtools | Found 5 flagstat reports
+|          samtools | Found 5 idxstats reports
+|              star | Found 5 reports
+|            fastqc | Found 8 reports
+|          cutadapt | Found 8 reports
+|            fastqc | Found 8 reports
+|           multiqc | Compressing plot data
+|           multiqc | Report      : multiqc_report.html
+|           multiqc | Data        : multiqc_data
+|           multiqc | Plots       : multiqc_plots
+|           multiqc | MultiQC complete

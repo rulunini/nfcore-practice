@@ -1,0 +1,24 @@
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+reading reference bed file:  genome_gfp.bed  ...  Done! Total 5 known splicing junctions.
+Load BAM file ...  Done
+shuffling alignments ... Done
+sampling 5% (8) splicing reads. 6 splicing junctions. 2 known splicing junctions. 4 novel splicing junctions.
+sampling 10% (16) splicing reads. 11 splicing junctions. 3 known splicing junctions. 8 novel splicing junctions.
+sampling 15% (24) splicing reads. 16 splicing junctions. 3 known splicing junctions. 13 novel splicing junctions.
+sampling 20% (33) splicing reads. 19 splicing junctions. 3 known splicing junctions. 16 novel splicing junctions.
+sampling 25% (41) splicing reads. 21 splicing junctions. 3 known splicing junctions. 18 novel splicing junctions.
+sampling 30% (49) splicing reads. 25 splicing junctions. 3 known splicing junctions. 22 novel splicing junctions.
+sampling 35% (58) splicing reads. 27 splicing junctions. 3 known splicing junctions. 24 novel splicing junctions.
+sampling 40% (66) splicing reads. 29 splicing junctions. 3 known splicing junctions. 26 novel splicing junctions.
+sampling 45% (74) splicing reads. 30 splicing junctions. 3 known splicing junctions. 27 novel splicing junctions.
+sampling 50% (83) splicing reads. 32 splicing junctions. 3 known splicing junctions. 29 novel splicing junctions.
+sampling 55% (91) splicing reads. 37 splicing junctions. 3 known splicing junctions. 34 novel splicing junctions.
+sampling 60% (99) splicing reads. 38 splicing junctions. 3 known splicing junctions. 35 novel splicing junctions.
+sampling 65% (107) splicing reads. 44 splicing junctions. 3 known splicing junctions. 41 novel splicing junctions.
+sampling 70% (116) splicing reads. 48 splicing junctions. 3 known splicing junctions. 45 novel splicing junctions.
+sampling 75% (124) splicing reads. 50 splicing junctions. 3 known splicing junctions. 47 novel splicing junctions.
+sampling 80% (132) splicing reads. 53 splicing junctions. 3 known splicing junctions. 50 novel splicing junctions.
+sampling 85% (141) splicing reads. 55 splicing junctions. 3 known splicing junctions. 52 novel splicing junctions.
+sampling 90% (149) splicing reads. 57 splicing junctions. 3 known splicing junctions. 54 novel splicing junctions.
+sampling 95% (157) splicing reads. 61 splicing junctions. 3 known splicing junctions. 58 novel splicing junctions.
+sampling 100% (166) splicing reads. 63 splicing junctions. 3 known splicing junctions. 60 novel splicing junctions.
